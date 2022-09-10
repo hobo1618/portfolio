@@ -2,20 +2,21 @@ import { useState, useEffect, useRef } from "react";
 import { v4 as uuidV4 } from "uuid";
 import { createRandomRGB, createBins, getLeftPosition } from "helpers";
 import Image from "next/image";
+import Packer from "packer";
+import cloneDeep from "lodash/cloneDeep";
 
-const BinPacking2D = require("binpackingjs").BP2D;
-const { Bin, Box, Packer } = BinPacking2D;
+const BinpackingLayout = ({ blocks }) => {
+  const deepBlocks = cloneDeep(blocks);
 
-const BinpackingLayout = ({ rawBoxes }) => {
   const [windowDimensions, setWindowDimensions] = useState({
     width: 0,
     height: 0,
   });
 
   const [myPacker, setMyPacker] = useState(
-    new Packer(createBins(0, Bin, windowDimensions))
+    new Packer(windowDimensions.width, windowDimensions.height)
   );
-
+  const [blocksToRender, setBlocksToRender] = useState(deepBlocks);
   const [loaded, setLoaded] = useState(false);
 
   const containerRef = useRef(null);
@@ -37,22 +38,19 @@ const BinpackingLayout = ({ rawBoxes }) => {
     }
 
     function handleResize() {
-      setWindowDimensions(getWindowDimensions(containerRef));
+      const timer = setTimeout(() => {
+        setBlocksToRender(blocks);
+        setWindowDimensions(getWindowDimensions(containerRef));
+        setBlocksToRender(deepBlocks);
+      }, 800);
+      return () => clearTimeout(timer);
     }
 
     window.addEventListener("resize", handleResize);
 
-    let boxes: Array<Boxes> = [];
-    rawBoxes.map((rawBox, i) => {
-      if (i < 100) {
-        boxes.push(new Box(rawBox.width, rawBox.height));
-        boxes[i]["href"] = rawBox.href;
-        boxes[i]["id"] = rawBox.id;
-      }
-    });
-
-    let packer = new Packer(createBins(10, Bin, windowDimensions));
-    packer.pack(boxes);
+    let packer = new Packer(windowDimensions.width, windowDimensions.height);
+    packer.fit(blocksToRender);
+    setBlocksToRender(blocksToRender);
     setMyPacker(packer);
 
     return () => window.removeEventListener("resize", handleResize);
@@ -84,44 +82,31 @@ const BinpackingLayout = ({ rawBoxes }) => {
         transform: "translateX(0) translateY(0px)",
       }}
     >
-      {myPacker.bins.map((bin: Bin, i: number) => (
-        <div
-          key={uuidV4()}
-          style={{
-            background: createRandomRGB(),
-            position: "absolute",
-            width: `${bin.width}px`,
-            height: `${bin.height}px`,
-            top: `${Math.floor(i / 2) * bin.height}px`,
-            left: `${getLeftPosition(i, windowDimensions.width)}px`,
-          }}
-        >
-          {bin.boxes.map((box: Box) => (
+      {blocksToRender.map((block) => {
+        if (block.fit) {
+          return (
             <div
               key={uuidV4()}
               style={{
-                // background: "pink",
-                // border: "1px dotted gray",
-                padding: "10px",
-                width: box.width,
-                height: box.height,
                 position: "absolute",
-                left: `${box.x}px`,
-                top: `${box.y}px`,
+                left: `${block.fit.x}px`,
+                width: `${block.width}px`,
+                top: `${block.fit.y}px`,
+                height: `${block.height}px`,
+                border: "1px dotted gray",
               }}
             >
-              {/* <Image src={box.href} width={box.width} height={box.height} /> */}
-              {/* <img src={box.href} /> */}
               <Image
-                width={box.width}
-                height={box.height}
-                src={`/assets/${box.href}`}
+                width={block.width}
+                height={block.height}
+                src={`/assets/${block.href}`}
               />
             </div>
-          ))}
-        </div>
-      ))}
+          );
+        }
+      })}
     </div>
   );
 };
+
 export default BinpackingLayout;
