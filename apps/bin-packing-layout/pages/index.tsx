@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import boxes_test from "data/boxes_test.json";
 import objects from "data/objects.json";
 import BinpackingLayout from "components/BinpackingLayout";
 
@@ -16,7 +15,7 @@ const Home: NextPage = () => {
       }}
     >
       <BinpackingLayout
-        rawBoxes={objects}
+        blocks={objects}
       />
     </div>
   );
