@@ -11,9 +11,9 @@ when sorted by max(width,height).
 Inputs:
 ------
 
-  w:       width of target rectangle
-  h:      height of target rectangle
-  blocks: array of any objects that have .w and .h attributes
+  width:       width of target rectangle
+  height:      height of target rectangle
+  blocks: array of any objects that have .width and .height attributes
 
 Outputs:
 -------
@@ -25,10 +25,10 @@ Example:
 -------
 
   var blocks = [
-    { w: 100, h: 100 },
-    { w: 100, h: 100 },
-    { w:  80, h:  80 },
-    { w:  80, h:  80 },
+    { width: 100, height: 100 },
+    { width: 100, height: 100 },
+    { width:  80, height:  80 },
+    { width:  80, height:  80 },
     etc
     etc
   ];
@@ -39,46 +39,58 @@ Example:
   for(var n = 0 ; n < blocks.length ; n++) {
     var block = blocks[n];
     if (block.fit) {
-      Draw(block.fit.x, block.fit.y, block.w, block.h);
+      Draw(block.fit.x, block.fit.y, block.width, block.height);
     }
   }
 
 
 ******************************************************************************/
 
-Packer = function(w, h) {
-  this.init(w, h);
+const Packer = function(width, height) {
+  this.init(width, height);
 };
 
 Packer.prototype = {
 
-  init: function(w, h) {
-    this.root = { x: 0, y: 0, w: w, h: h };
+  init: function(width, height) {
+    this.root = { x: 0, y: 0, width: width, height: height };
   },
 
   fit: function(blocks) {
     var n, node, block;
     for (n = 0; n < blocks.length; n++) {
       block = blocks[n];
-      if (node = this.findNode(this.root, block.w, block.h))
-        block.fit = this.splitNode(node, block.w, block.h);
+      node = this.findNode(this.root, block.width, block.height)
+      if (node)
+        block.fit = this.splitNode(node, block.width, block.height);
     }
   },
 
-  findNode: function(root, w, h) {
+  findNode: function(root, width, height) {
     if (root.used)
-      return this.findNode(root.right, w, h) || this.findNode(root.down, w, h);
-    else if ((w <= root.w) && (h <= root.h))
+      return this.findNode(root.right, width, height) || this.findNode(root.down, width, height);
+    else if ((width <= root.width) && (height <= root.height))
       return root;
     else
       return null;
   },
 
-  splitNode: function(node, w, h) {
+  splitNode: function(node, width, height) {
     node.used = true;
-    node.down  = { x: node.x,     y: node.y + h, w: node.w,     h: node.h - h };
-    node.right = { x: node.x + w, y: node.y,     w: node.w - w, h: h          };
+    node.down  = { x: node.x,     y: node.y + height, width: node.width,     height: node.height - height };
+    node.right = { x: node.x + width, y: node.y,     width: node.width - width, height: height          };
     return node;
   }
 
 }
+
+var blocks = [
+  { width: 500, height: 400 },
+  { width: 100, height: 100 },
+  { width: 100, height: 100 },
+  { width:  80, height:  80 },
+  { width:  80, height:  80 },
+];
+
+
+export default Packer
