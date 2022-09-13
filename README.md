@@ -1,11 +1,11 @@
 # My portfolio
 
-## What's inside?
+
 
 This is a small sample of work I've completed in the past. In this repo you'll find some sample apps in the `apps/` directory, as well as the UI packages I developed and used to build these apps in the `ui` directory.
 
 This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
-
+## What's inside?
 ### Apps and Packages
 
 - `docs`: a [Next.js](https://nextjs.org) app
