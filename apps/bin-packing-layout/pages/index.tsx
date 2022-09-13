@@ -9,7 +9,8 @@ const Home: NextPage = () => {
         display: "flex",
         width: "100%",
         height: "100vh",
-        marginTop: "3rem",
+        background: "pink",
+        // marginTop: "3rem",
         paddingLeft: "4rem",
         paddingRight: "4rem",
       }}
