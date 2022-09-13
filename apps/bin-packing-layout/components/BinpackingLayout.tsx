@@ -1,65 +1,18 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { v4 as uuidV4 } from "uuid";
-import { createRandomRGB, createBins, getLeftPosition } from "helpers";
-import Image from "next/image";
-import Packer from "packer";
-import cloneDeep from "lodash/cloneDeep";
+import useBinPackingLayout from "hooks/useBinPackingLayout"
 
 const BinpackingLayout = ({ blocks }) => {
-  const deepBlocks = cloneDeep(blocks);
-
-  const [containerDimensions, setContainerDimensions] = useState({
-    width: 0,
-    height: 0,
-  });
-
-  const [myPacker, setMyPacker] = useState(
-    new Packer(containerDimensions.width, containerDimensions.height)
-  );
-  const [blocksToRender, setBlocksToRender] = useState(deepBlocks);
-  const [loaded, setLoaded] = useState(false);
-
   const containerRef = useRef(null);
-
-  useEffect(() => {
-    if (!loaded) {
-      setContainerDimensions(getContainerDimensions(containerRef));
-      setLoaded(true);
-    }
-
-    function getContainerDimensions(ref) {
-      if (ref.current) {
-        const { clientWidth: width, clientHeight: height } = ref.current;
-        return {
-          width,
-          height,
-        };
-      }
-    }
-
-    function handleResize() {
-      setBlocksToRender(blocks);
-      setContainerDimensions(getContainerDimensions(containerRef));
-      setBlocksToRender(deepBlocks);
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    let packer = new Packer(containerDimensions.width, containerDimensions.height);
-    packer.fit(blocksToRender);
-    setBlocksToRender(blocksToRender);
-    setMyPacker(packer);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, [containerDimensions]);
-
+  const [blocksToRender] = useBinPackingLayout(blocks, containerRef)
+  
   interface Bin {
     width: number;
     height: number;
-    boxes: Box[];
+    boxes: Block[];
   }
 
-  interface Box {
+  interface Block {
     width: number;
     height: number;
     href: string;
@@ -68,7 +21,7 @@ const BinpackingLayout = ({ blocks }) => {
     y: number;
   }
 
-  interface Boxes extends Array<Box> {}
+  interface Boxes extends Array<Block> {}
 
   const css = `
   .imageEffects {
@@ -84,6 +37,11 @@ const BinpackingLayout = ({ blocks }) => {
     }
     10% {
       opacity: 0;
+      filter: blur(2px);
+      transform: scale(1.01)
+    }
+    40% {
+      opacity: .1;
       filter: blur(2px);
       transform: scale(1.01)
     }
