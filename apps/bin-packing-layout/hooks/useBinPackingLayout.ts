@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import FirstFit from "algorithms/FirstFit";
 import Packer from "packer";
 import cloneDeep from "lodash/cloneDeep";
+import FirstFitInfiniteHeight from "algorithms/FirstFitInfiniteHeight";
 
 const customAlgorithm = (blocks, algorithm) => {
   const blocksToRender = algorithm(blocks);
@@ -13,21 +15,33 @@ const firstFitDecreasing = (blocks, dimensions) => {
   return blocks;
 };
 
+const firstFit = (blocks, dimensions) => {
+  const packer = new FirstFit(dimensions.width, dimensions.height);
+  packer.fit(blocks);
+  return blocks;
+};
+
+const firstFitInfiniteHeight = (blocks, dimensions) => {
+  const packer = new FirstFitInfiniteHeight(dimensions.width);
+  packer.fit(blocks);
+  return blocks;
+};
+
+
 const useBinPackingAlgorithm = (blocks, binDimensions, type, userAlgorithm) => {
   const deepBlocks = cloneDeep(blocks);
 
   switch (type) {
     case "firstFitDecreasing":
-      console.log("use firstFitDecreasing");
       return firstFitDecreasing(deepBlocks, binDimensions);
-    case "bestFit":
-      console.log("use bestFitDecreasing");
+    case "firstFitInfiniteHeight":
+      return firstFitInfiniteHeight(deepBlocks, binDimensions);
     case "custom":
       console.log("use custom");
       return customAlgorithm(deepBlocks, userAlgorithm);
     default:
-      console.log("use firstFitDecreasing");
-      return firstFitDecreasing(deepBlocks, binDimensions);
+      console.log("use firstFit");
+      return firstFit(deepBlocks, binDimensions);
   }
 };
 
