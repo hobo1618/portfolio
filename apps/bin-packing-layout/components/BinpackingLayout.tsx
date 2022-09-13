@@ -8,13 +8,13 @@ import cloneDeep from "lodash/cloneDeep";
 const BinpackingLayout = ({ blocks }) => {
   const deepBlocks = cloneDeep(blocks);
 
-  const [windowDimensions, setWindowDimensions] = useState({
+  const [containerDimensions, setContainerDimensions] = useState({
     width: 0,
     height: 0,
   });
 
   const [myPacker, setMyPacker] = useState(
-    new Packer(windowDimensions.width, windowDimensions.height)
+    new Packer(containerDimensions.width, containerDimensions.height)
   );
   const [blocksToRender, setBlocksToRender] = useState(deepBlocks);
   const [loaded, setLoaded] = useState(false);
@@ -23,11 +23,11 @@ const BinpackingLayout = ({ blocks }) => {
 
   useEffect(() => {
     if (!loaded) {
-      setWindowDimensions(getWindowDimensions(containerRef));
+      setContainerDimensions(getContainerDimensions(containerRef));
       setLoaded(true);
     }
 
-    function getWindowDimensions(ref) {
+    function getContainerDimensions(ref) {
       if (ref.current) {
         const { clientWidth: width, clientHeight: height } = ref.current;
         return {
@@ -38,23 +38,20 @@ const BinpackingLayout = ({ blocks }) => {
     }
 
     function handleResize() {
-      const timer = setTimeout(() => {
-        setBlocksToRender(blocks);
-        setWindowDimensions(getWindowDimensions(containerRef));
-        setBlocksToRender(deepBlocks);
-      }, 800);
-      return () => clearTimeout(timer);
+      setBlocksToRender(blocks);
+      setContainerDimensions(getContainerDimensions(containerRef));
+      setBlocksToRender(deepBlocks);
     }
 
     window.addEventListener("resize", handleResize);
 
-    let packer = new Packer(windowDimensions.width, windowDimensions.height);
+    let packer = new Packer(containerDimensions.width, containerDimensions.height);
     packer.fit(blocksToRender);
     setBlocksToRender(blocksToRender);
     setMyPacker(packer);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [windowDimensions]);
+  }, [containerDimensions]);
 
   interface Bin {
     width: number;
@@ -73,6 +70,30 @@ const BinpackingLayout = ({ blocks }) => {
 
   interface Boxes extends Array<Box> {}
 
+  const css = `
+  .imageEffects {
+    animation: fadeInAnimation ease-in 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+      filter: blur(5px);
+      transform: scale(1.01)
+    }
+    10% {
+      opacity: 0;
+      filter: blur(2px);
+      transform: scale(1.01)
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px)
+      transform: scale(1)
+    }
+  }
+  `;
   return (
     <div
       ref={containerRef}
@@ -82,6 +103,7 @@ const BinpackingLayout = ({ blocks }) => {
         transform: "translateX(0) translateY(0px)",
       }}
     >
+      <style>{css}</style>
       {blocksToRender.map((block) => {
         if (block.fit) {
           return (
@@ -93,10 +115,12 @@ const BinpackingLayout = ({ blocks }) => {
                 width: `${block.width}px`,
                 top: `${block.fit.y}px`,
                 height: `${block.height}px`,
-                border: "1px dotted gray",
+                // border: "1px dotted gray",
               }}
             >
-              <Image
+              <img
+                className="imageEffects"
+                style={{padding: "5px"}}
                 width={block.width}
                 height={block.height}
                 src={`/assets/${block.href}`}
