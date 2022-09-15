@@ -5,7 +5,6 @@ import useBinPackingLayout from "hooks/useBinPackingLayout";
 
 const BinpackingLayout = ({ blocks }) => {
   const containerRef = useRef(null);
-  // const [blocksToRender] = useBinPackingLayout(blocks, containerRef)
   const [blocksToRender] = useBinPackingLayout(
     blocks,
     containerRef,
@@ -70,29 +69,6 @@ const BinpackingLayout = ({ blocks }) => {
     >
       <style>{css}</style>
       {blocksToRender.map((block) => {
-        
-        // return (
-        //   <div
-        //     key={uuidV4()}
-        //     style={{
-        //       position: "absolute",
-        //       left: `${block.x}px`,
-        //       width: `${block.width}px`,
-        //       top: `${block.y}px`,
-        //       height: `${block.height}px`,
-        //       // border: "1px dotted gray",
-        //     }}
-        //   >
-        //     <img
-        //       className="imageEffects"
-        //       style={{ padding: "5px" }}
-        //       width={block.width}
-        //       height={block.height}
-        //       src={`/assets/${block.href}`}
-        //     />
-        //   </div>
-        // );
-
         if (block.fit) {
           return (
             <div
