@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import objects from "data/objects.json";
 import BinpackingLayout from "components/BinpackingLayout";
+import BlurImage from "components/BlurImage";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
     >
       <BinpackingLayout
         blocks={objects}
+        Component={BlurImage}
       />
     </div>
   );
