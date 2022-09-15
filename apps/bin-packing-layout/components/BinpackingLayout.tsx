@@ -51,8 +51,6 @@ const BinpackingLayout = ({ blocks }) => {
   const [blocksToRender] = useBinPackingLayout(
     blocks,
     containerRef,
-    "firstFitInfiniteHeight",
-    null
   );
 
   interface Bin {
@@ -110,7 +108,6 @@ const BinpackingLayout = ({ blocks }) => {
         transform: "translateX(0) translateY(0px)",
       }}
     >
-      {/* <style>{css}</style> */}
       {blocksToRender.map((block) => {
         if (block.fit)
           return (
@@ -124,7 +121,6 @@ const BinpackingLayout = ({ blocks }) => {
                 height: `${block.height}px`,
                 padding: "5px",
               }}
-              // className="imageEffects"
             >
               <BlurImage
                 width={block.width}
