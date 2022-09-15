@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@types/uuid": "^8.3.4",
-    "binpackingjs": "^3.0.2",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.21",
     "next": "12.2.5",
