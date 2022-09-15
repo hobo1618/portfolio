@@ -1,51 +1,3 @@
-/******************************************************************************
-
-This is a very simple binary tree based bin packing algorithm that is initialized
-with a fixed width and height and will fit each block into the first node where
-it fits and then split that node into 2 parts (down and right) to track the
-remaining whitespace.
-
-Best results occur when the input blocks are sorted by height, or even better
-when sorted by max(width,height).
-
-Inputs:
-------
-
-  width:       width of target rectangle
-  height:      height of target rectangle
-  blocks: array of any objects that have .width and .height attributes
-
-Outputs:
--------
-
-  marks each block that fits with a .fit attribute pointing to a
-  node with .x and .y coordinates
-
-Example:
--------
-
-  var blocks = [
-    { width: 100, height: 100 },
-    { width: 100, height: 100 },
-    { width:  80, height:  80 },
-    { width:  80, height:  80 },
-    etc
-    etc
-  ];
-
-  var packer = new FirstFit(500, 500);
-  packer.fit(blocks);
-
-  for(var n = 0 ; n < blocks.length ; n++) {
-    var block = blocks[n];
-    if (block.fit) {
-      Draw(block.fit.x, block.fit.y, block.width, block.height);
-    }
-  }
-
-
-******************************************************************************/
-
 class FirstFit {
   width: number;
   height: number;
@@ -58,21 +10,23 @@ class FirstFit {
   }
 
   fit(blocks) {
-
     let node;
-    blocks.map(block => {
-      node = this.findNode(this.root, block.width, block.height)
-      if(node) block.fit = this.splitNode(node, block.width, block.height);
-    })
+    blocks.sort((a, b) => b.height - a.height || b.width - a.width);
+    blocks.map((block) => {
+      node = this.findNode(this.root, block.width, block.height);
+      if (node) block.fit = this.splitNode(node, block.width, block.height);
+    });
+    console.log(this.root);
+    
   }
 
   findNode(root, width, height) {
-    if (root.used)
+    if (root.used) {
       return (
         this.findNode(root.right, width, height) ||
         this.findNode(root.down, width, height)
       );
-    else if (width <= root.width && height <= root.height) return root;
+    } else if (width <= root.width && height <= root.height) return root;
     else return null;
   }
 
