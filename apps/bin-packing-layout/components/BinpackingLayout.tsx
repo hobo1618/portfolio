@@ -4,7 +4,7 @@ import useBinPackingLayout from "hooks/useBinPackingLayout";
 
 const BinpackingLayout = ({ blocks, Component }) => {
   const containerRef = useRef(null);
-  const [blocksToRender] = useBinPackingLayout(blocks, containerRef);
+  const [blocksToRender, containerHeight] = useBinPackingLayout(blocks, containerRef);
 
   interface Bin {
     width: number;
@@ -28,8 +28,8 @@ const BinpackingLayout = ({ blocks, Component }) => {
       ref={containerRef}
       style={{
         width: "100%",
-        height: "0vh",
-        transform: "translateX(0) translateY(0px)",
+        height: `${containerHeight}px`,
+        position: "relative",
       }}
     >
       {blocksToRender.map((block) => {

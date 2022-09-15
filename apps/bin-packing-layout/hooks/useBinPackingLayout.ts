@@ -1,60 +1,57 @@
 import { useState, useEffect } from "react";
 import cloneDeep from "lodash/cloneDeep";
 import FirstFitInfiniteHeight from "algorithms/FirstFitInfiniteHeight";
-
-const firstFitInfiniteHeight = (blocks, dimensions) => {
-  // const packer = new FirstFitInfiniteHeight(dimensions.width);
-  // packer.fit(blocks);
-  // return blocks;
-
+import { debounce } from "lodash";
+const firstFitInfiniteHeight = (blocks, width) => {
   const deepBlocks = cloneDeep(blocks);
-  const packer = new FirstFitInfiniteHeight(dimensions.width);
+  const packer = new FirstFitInfiniteHeight(width);
   packer.fit(deepBlocks);
-  return deepBlocks;
+  return { orderedBlocks: deepBlocks, height: packer.height };
 };
 
 const getContainerDimensions = (ref) => {
-  if (ref.current) {
-    const { clientWidth: width, clientHeight: height } = ref.current;
-    return {
-      width,
-      height,
-    };
-  }
+  if (ref.current) return ref.current.clientWidth;
 };
 
 const useBinPackingLayout = (blocks, containerRef) => {
-  const [containerDimensions, setContainerDimensions] = useState({
-    width: 0,
-    height: 0,
-  });
-
   const [blocksToRender, setBlocksToRender] = useState(blocks);
   const [loaded, setLoaded] = useState(false);
+  // width is computed based on window event listener and ref
+  const [containerWidth, setContainerWidth] = useState(0);
+  // height is computed after the algorithm runs
+  const [containerHeight, setContainerHeight] = useState(0);
 
   useEffect(() => {
     if (!loaded) {
-      setContainerDimensions(getContainerDimensions(containerRef));
+      setContainerWidth(getContainerDimensions(containerRef));
       setLoaded(true);
     }
 
-    window.addEventListener("resize", handleResize);
-
-    setBlocksToRender(
-      firstFitInfiniteHeight(blocks, containerDimensions)
+    // pack blocks and get height
+    const { orderedBlocks, height } = firstFitInfiniteHeight(
+      blocks,
+      containerWidth
     );
+    setBlocksToRender(orderedBlocks);
+    setContainerHeight(height);
 
-    function handleResize() {
-      setContainerDimensions(getContainerDimensions(containerRef));
-      setBlocksToRender(
-      firstFitInfiniteHeight(blocks, containerDimensions)
+    const debouncedHandleResize = debounce(function handleResize() {
+      setContainerWidth(getContainerDimensions(containerRef));
+      // repack blocks and get height
+      const { orderedBlocks, height } = firstFitInfiniteHeight(
+        blocks,
+        containerWidth
       );
-    }
+      setBlocksToRender(orderedBlocks);
+      setContainerHeight(height);
+    }, 1000);
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, [containerDimensions.width]);
+    window.addEventListener("resize", debouncedHandleResize);
 
-  return [blocksToRender];
+    return () => window.removeEventListener("resize", debouncedHandleResize);
+  }, [containerWidth]);
+
+  return [blocksToRender, containerHeight];
 };
 
 export default useBinPackingLayout;

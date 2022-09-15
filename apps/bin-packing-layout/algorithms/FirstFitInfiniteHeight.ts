@@ -4,15 +4,13 @@ class FFDInfiniteHeight {
   height: number;
 
   constructor(width: number) {
-    this.width = width;
     this.height = 0;
-    this.root = { x: 0, y: 0, width, height: this.height };
+    this.root = { x: 0, y: 0, width, height: 0 };
   }
 
   fit(blocks: []) {
     let node;
     blocks.sort((a, b) => b.height - a.height || b.width - a.width);
-    this.root.height = blocks[0].height;
     blocks.map((block: object) => {
       // if we find a good root, then we set node = root
       // i.e. this is where we'll place our block
@@ -60,7 +58,8 @@ class FFDInfiniteHeight {
       return root;
     // if the block is unused but doesn't fit in the root, set node = null
     else if (blockWidth <= root.width && root.x == 0) {
-      root.height = blockHeight
+      this.height = this.height + blockHeight;
+      root.height = blockHeight;
       return root;
     }
     else return null
