@@ -1,5 +1,6 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
+import Image from "next/image";
 import useBinPackingLayout from "hooks/useBinPackingLayout";
 
 const BinpackingLayout = ({ blocks }) => {
@@ -63,59 +64,57 @@ const BinpackingLayout = ({ blocks }) => {
       ref={containerRef}
       style={{
         width: "100%",
-        height: "100vh",
+        height: "0vh",
         transform: "translateX(0) translateY(0px)",
       }}
     >
       <style>{css}</style>
       {blocksToRender.map((block) => {
-        console.log(block);
         
-        return (
-          <div
-            key={uuidV4()}
-            style={{
-              position: "absolute",
-              left: `${block.x}px`,
-              width: `${block.width}px`,
-              top: `${block.y}px`,
-              height: `${block.height}px`,
-              // border: "1px dotted gray",
-            }}
-          >
-            <img
-              className="imageEffects"
-              style={{ padding: "5px" }}
-              width={block.width}
-              height={block.height}
-              src={`/assets/${block.href}`}
-            />
-          </div>
-        );
+        // return (
+        //   <div
+        //     key={uuidV4()}
+        //     style={{
+        //       position: "absolute",
+        //       left: `${block.x}px`,
+        //       width: `${block.width}px`,
+        //       top: `${block.y}px`,
+        //       height: `${block.height}px`,
+        //       // border: "1px dotted gray",
+        //     }}
+        //   >
+        //     <img
+        //       className="imageEffects"
+        //       style={{ padding: "5px" }}
+        //       width={block.width}
+        //       height={block.height}
+        //       src={`/assets/${block.href}`}
+        //     />
+        //   </div>
+        // );
 
-        // if (block.fit) {
-        //   return (
-        //     <div
-        //       key={uuidV4()}
-        //       style={{
-        //         position: "absolute",
-        //         left: `${block.fit.x}px`,
-        //         width: `${block.width}px`,
-        //         top: `${block.fit.y}px`,
-        //         height: `${block.height}px`,
-        //         // border: "1px dotted gray",
-        //       }}
-        //     >
-        //       <img
-        //         className="imageEffects"
-        //         style={{padding: "5px"}}
-        //         width={block.width}
-        //         height={block.height}
-        //         src={`/assets/${block.href}`}
-        //       />
-        //     </div>
-        //   );
-        // }
+        if (block.fit) {
+          return (
+            <div
+              key={uuidV4()}
+              style={{
+                position: "absolute",
+                left: `${block.fit.x}px`,
+                width: `${block.width}px`,
+                top: `${block.fit.y}px`,
+                height: `${block.height}px`,
+                padding: '5px',
+              }}
+                className="imageEffects"
+            >
+              <Image
+                width={block.width}
+                height={block.height}
+                src={`/assets/${block.href}`}
+              />
+            </div>
+          );
+        }
       })}
     </div>
   );
