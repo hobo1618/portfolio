@@ -10,7 +10,6 @@ const Home: NextPage = () => {
         width: "100%",
         height: "100vh",
         background: "pink",
-        // marginTop: "3rem",
         paddingLeft: "4rem",
         paddingRight: "4rem",
       }}
