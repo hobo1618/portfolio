@@ -1,27 +1,27 @@
-import { useRef } from "react";
+import { useRef, ElementType } from "react";
 import { v4 as uuidV4 } from "uuid";
 import useBinPackingLayout from "hooks/useBinPackingLayout";
 
-const BinpackingLayout = ({ blocks, Component }) => {
-  const containerRef = useRef(null);
-  const [blocksToRender, containerHeight] = useBinPackingLayout(blocks, containerRef);
+interface ComponentProps {
+  blocks: Array<Block>;
+  Component: ElementType<Block>;
+};
 
-  interface Bin {
-    width: number;
-    height: number;
-    boxes: Block[];
-  }
-
-  interface Block {
-    width: number;
-    height: number;
-    href: string;
-    id: number;
+interface Block {
+  width: number;
+  height: number;
+  fit?: {
     x: number;
     y: number;
-  }
+  };
+}
 
-  interface Boxes extends Array<Block> {}
+const BinpackingLayout = ({ blocks, Component }: ComponentProps) => {
+  const containerRef = useRef(null);
+  const [blocksToRender, containerHeight] = useBinPackingLayout(
+    blocks,
+    containerRef
+  );
 
   return (
     <div
@@ -32,7 +32,7 @@ const BinpackingLayout = ({ blocks, Component }) => {
         position: "relative",
       }}
     >
-      {blocksToRender.map((block) => {
+      {blocksToRender.map((block: Block) => {
         if (block.fit)
           return (
             <div

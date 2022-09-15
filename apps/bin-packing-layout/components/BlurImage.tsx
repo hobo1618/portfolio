@@ -1,7 +1,13 @@
 import Image from "next/image";
 import styles from "components/BlurImage.module.css";
 
-const BlurImage = ({ width, height, href }) => {
+interface BlurImageProps {
+  width: number;
+  height: number;
+  href: string;
+}
+
+const BlurImage = ({ width, height, href }:BlurImageProps) => {
   return (
     <Image
       width={width}
