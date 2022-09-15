@@ -4,21 +4,31 @@ import BinpackingLayout from "components/BinpackingLayout";
 import BlurImage from "components/BlurImage";
 
 const Home: NextPage = () => {
+  const totalImages = objects.length;
+  const imagesPerBin = 20;
+  const fullBins = Math.floor(totalImages / imagesPerBin);
+  const remainingImages = totalImages - fullBins * imagesPerBin;
+  let totalBins = remainingImages != 0 ? fullBins : fullBins + 1;
+  let sets = new Array(totalBins);
+  for (let i = 0; i < sets.length; i++) {
+    sets[i] = objects.slice(i * imagesPerBin, (i + 1) * imagesPerBin);
+  }
+
   return (
     <div
       style={{
         display: "flex",
+        flexDirection: "column",
         width: "100%",
-        height: "100vh",
+        minHeight: "fit-content",
         background: "pink",
         paddingLeft: "4rem",
         paddingRight: "4rem",
       }}
     >
-      <BinpackingLayout
-        blocks={objects}
-        Component={BlurImage}
-      />
+      <h1>HEY YOU!!</h1>
+      {sets.map(set => <BinpackingLayout blocks={set} Component={BlurImage} />)}
+      <h1>HEY YOU!!</h1>
     </div>
   );
 };
