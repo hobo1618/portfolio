@@ -5,7 +5,7 @@ export interface TagsStructure {
   purpose: Array<Purpose>;
 }
 
-export type Categories = "style" | "space" | "purpose";
+export type Categories = "style" | "space" | "purpose" | "itemType";
 export type Style = string
 export type Purpose = string
 export type Space = string
