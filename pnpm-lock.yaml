@@ -135,14 +135,18 @@ importers:
       '@types/react-dom': ^18.0.6
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
+      lodash: ^4.17.21
       next: 12.2.5
       react: ^18.2.0
       react-dom: ^17.0.2 || ^18.0.0-0
       tsconfig: workspace:*
       typescript: ^4.5.2
+      uuid: ^9.0.0
     dependencies:
+      lodash: 4.17.21
       next: 12.2.5_biqbaboplfbrettd7655fr4n2y
       react-dom: 18.2.0_react@18.2.0
+      uuid: 9.0.0
     devDependencies:
       '@types/react': 18.0.19
       '@types/react-dom': 18.0.6

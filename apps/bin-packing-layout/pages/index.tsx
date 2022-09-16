@@ -1,8 +1,7 @@
 import type { NextPage } from "next";
 import objects from "data/objects.json";
-import BinpackingLayout from "components/BinpackingLayout";
 import { v4 as uuidV4 } from "uuid";
-import { BlurImage } from "ui";
+import { BlurImage, BinpackingLayout } from "ui";
 
 const Home: NextPage = () => {
   const totalImages = objects.length;

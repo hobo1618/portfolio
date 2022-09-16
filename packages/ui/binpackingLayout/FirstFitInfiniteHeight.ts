@@ -4,6 +4,7 @@ class FFDInfiniteHeight {
   height: number;
 
   constructor(width: number) {
+    this.width = width
     this.height = 0;
     this.root = { x: 0, y: 0, width, height: 0 };
   }

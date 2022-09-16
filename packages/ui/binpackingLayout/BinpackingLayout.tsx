@@ -1,11 +1,11 @@
 import { useRef, ElementType } from "react";
 import { v4 as uuidV4 } from "uuid";
-import useBinPackingLayout from "hooks/useBinPackingLayout";
+import useBinPackingLayout from "./useBinPackingLayout";
 
 interface ComponentProps {
   blocks: Array<Block>;
   Component: ElementType<Block> & any;
-};
+}
 
 interface Block {
   width: number;
@@ -54,4 +54,4 @@ const BinpackingLayout = ({ blocks, Component }: ComponentProps) => {
   );
 };
 
-export default BinpackingLayout;
+export { BinpackingLayout };

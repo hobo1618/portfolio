@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import cloneDeep from "lodash/cloneDeep";
-import FirstFitInfiniteHeight from "algorithms/FirstFitInfiniteHeight";
-import { debounce } from "lodash";
+import FirstFitInfiniteHeight from "./FirstFitInfiniteHeight";
+import { debounce, cloneDeep } from "lodash";
+
 const firstFitInfiniteHeight = (blocks, width) => {
   const deepBlocks = cloneDeep(blocks);
   const packer = new FirstFitInfiniteHeight(width);
