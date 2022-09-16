@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
 
 const Test: NextPage = () => {
-
   return (
-    <div style={{ width: "500px", background: "blue", height: "500px" }}>
-      hey
+    <div>
+      <h1>test page</h1>
     </div>
   );
 };

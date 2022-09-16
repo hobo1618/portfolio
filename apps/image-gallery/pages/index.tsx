@@ -2,38 +2,55 @@ import type { NextPage } from "next";
 import objects from "data/json/items.json";
 import { v4 as uuidV4 } from "uuid";
 import { BlurImage, BinpackingLayout } from "ui";
-import tags from "data/tagsDataGenerator";
+import createSets from "utils/createSets";
 
 const Home: NextPage = () => {
-  console.log(tags);
-  
-  const totalImages = objects.length;
-  const imagesPerBin = 20;
-  const fullBins = Math.floor(totalImages / imagesPerBin);
-  const remainingImages = totalImages - fullBins * imagesPerBin;
-  let totalBins = remainingImages != 0 ? fullBins : fullBins + 1;
-  let sets = new Array(totalBins);
-  for (let i = 0; i < sets.length; i++) {
-    sets[i] = objects.slice(i * imagesPerBin, (i + 1) * imagesPerBin);
-  }
-
   return (
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        minHeight: "fit-content",
-        background: "pink",
-        paddingLeft: "4rem",
-        paddingRight: "4rem",
+        flexDirection: "row",
+        alignItems: "flex-start",
       }}
     >
-      <h1>HEY YOU!!</h1>
-      {sets.map((set) => (
-        <BinpackingLayout key={uuidV4()} blocks={set} Component={BlurImage} />
-      ))}
-      <h1>HEY YOU!!</h1>
+      <div
+        style={{
+          flexBasis: "25rem",
+          position: "sticky",
+          maxHeight: "100vh",
+          overflowY: "auto",
+          top: "0",
+          background: "black",
+          border: "1px dotted pink",
+        }}
+      >
+        <div
+          style={{ position: "absolute", top: "0", right: "-50px", zIndex: "10" }}
+        >
+          hey
+        </div>
+        <h1 style={{ fontSize: "72px", color: "white", margin: "0" }}>settla</h1>
+        <hr />
+        <h1>style</h1>
+        <hr />
+        <h1>space</h1>
+        <hr />
+        <h1>type</h1>
+        <hr />
+        <h1>purpose</h1>
+        <hr />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexGrow: 4,
+          flexDirection: "column",
+        }}
+      >
+        {createSets(objects, 5).map((set) => (
+          <BinpackingLayout key={uuidV4()} blocks={set} Component={BlurImage} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -30,6 +30,8 @@ const BinpackingLayout = ({ blocks, Component }: ComponentProps) => {
         width: "100%",
         height: `${containerHeight}px`,
         position: "relative",
+        display: "flex",
+        flexDirection: "row",
       }}
     >
       {blocksToRender.map((block: Block) => {
@@ -43,7 +45,8 @@ const BinpackingLayout = ({ blocks, Component }: ComponentProps) => {
                 width: `${block.width}px`,
                 top: `${block.fit.y}px`,
                 height: `${block.height}px`,
-                padding: "5px",
+                paddingBottom: "5px",
+                paddingLeft: "5px",
               }}
             >
               <Component {...block} />
