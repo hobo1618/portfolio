@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import objects from "data/objects.json";
 import BinpackingLayout from "components/BinpackingLayout";
+import { v4 as uuidV4 } from "uuid";
 import { BlurImage } from "ui";
 
 const Home: NextPage = () => {
@@ -28,7 +29,7 @@ const Home: NextPage = () => {
     >
       <h1>HEY YOU!!</h1>
       {sets.map((set) => (
-        <BinpackingLayout blocks={set} Component={BlurImage} />
+        <BinpackingLayout key={uuidV4()} blocks={set} Component={BlurImage} />
       ))}
       <h1>HEY YOU!!</h1>
     </div>
