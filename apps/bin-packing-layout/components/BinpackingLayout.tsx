@@ -4,7 +4,7 @@ import useBinPackingLayout from "hooks/useBinPackingLayout";
 
 interface ComponentProps {
   blocks: Array<Block>;
-  Component: ElementType<Block>;
+  Component: ElementType<Block> & any;
 };
 
 interface Block {
