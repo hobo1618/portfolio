@@ -1,9 +1,12 @@
 import type { NextPage } from "next";
-import objects from "data/objects.json";
+import objects from "data/json/items.json";
 import { v4 as uuidV4 } from "uuid";
 import { BlurImage, BinpackingLayout } from "ui";
+import tags from "data/tagsDataGenerator";
 
 const Home: NextPage = () => {
+  console.log(tags);
+  
   const totalImages = objects.length;
   const imagesPerBin = 20;
   const fullBins = Math.floor(totalImages / imagesPerBin);

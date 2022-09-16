@@ -12,7 +12,36 @@ importers:
       prettier: 2.7.1
       turbo: 1.4.6
 
-  apps/bin-packing-layout:
+  apps/docs:
+    specifiers:
+      '@babel/core': ^7.0.0
+      '@types/node': ^17.0.12
+      '@types/react': 18.0.17
+      eslint: 7.32.0
+      eslint-config-custom: workspace:*
+      next: 12.2.5
+      next-transpile-modules: 9.0.0
+      react: 18.2.0
+      react-dom: 18.2.0
+      tsconfig: workspace:*
+      typescript: ^4.5.3
+      ui: workspace:*
+    dependencies:
+      next: 12.2.5_vyk55zyolcaieh7zfm7nf7uva4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      ui: link:../../packages/ui
+    devDependencies:
+      '@babel/core': 7.19.0
+      '@types/node': 17.0.45
+      '@types/react': 18.0.17
+      eslint: 7.32.0
+      eslint-config-custom: link:../../packages/eslint-config-custom
+      next-transpile-modules: 9.0.0
+      tsconfig: link:../../packages/tsconfig
+      typescript: 4.8.3
+
+  apps/image-gallery:
     specifiers:
       '@types/lodash': ^4.14.185
       '@types/node': 18.7.15
@@ -50,35 +79,6 @@ importers:
       eslint-config-next: 12.2.5_yqf6kl63nyoq5megxukfnom5rm
       tsconfig: link:../../packages/tsconfig
       typescript: 4.8.2
-
-  apps/docs:
-    specifiers:
-      '@babel/core': ^7.0.0
-      '@types/node': ^17.0.12
-      '@types/react': 18.0.17
-      eslint: 7.32.0
-      eslint-config-custom: workspace:*
-      next: 12.2.5
-      next-transpile-modules: 9.0.0
-      react: 18.2.0
-      react-dom: 18.2.0
-      tsconfig: workspace:*
-      typescript: ^4.5.3
-      ui: workspace:*
-    dependencies:
-      next: 12.2.5_vyk55zyolcaieh7zfm7nf7uva4
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      ui: link:../../packages/ui
-    devDependencies:
-      '@babel/core': 7.19.0
-      '@types/node': 17.0.45
-      '@types/react': 18.0.17
-      eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
-      next-transpile-modules: 9.0.0
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.8.3
 
   apps/web:
     specifiers:
