@@ -1,13 +1,14 @@
+import * as React from "react";
 import Image from "next/image";
-import styles from "components/BlurImage.module.css";
+import styles from "./BlurImage.module.css";
 
-interface BlurImageProps {
+type BlurImageProps = {
   width: number;
   height: number;
   href: string;
-}
+};
 
-const BlurImage = ({ width, height, href }:BlurImageProps) => {
+const BlurImage = ({ width, height, href }: BlurImageProps) => {
   return (
     <Image
       width={width}
@@ -18,4 +19,4 @@ const BlurImage = ({ width, height, href }:BlurImageProps) => {
   );
 };
 
-export default BlurImage;
+export { BlurImage };
