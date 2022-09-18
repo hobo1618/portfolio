@@ -127,546 +127,546 @@
   {
     "id": "8e8a2f00-0809-47c0-95d1-14eeb3627f56",
     "name": "Armchair",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "fcd0a417-9c2a-46bd-b018-640212a8868a",
     "name": "Bar stool",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "475b57e9-e7cc-48d5-a16f-7bfb41b3e3d4",
     "name": "Bar table",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "eee7d35b-c3d5-4be7-b2d4-5022d6711d94",
     "name": "Bathroom cabinet",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "887deafe-0b71-4eb5-a8e0-d11d2365df33",
     "name": "Bathroom curtain",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "04daa218-645d-47ff-acf2-39625eb25352",
     "name": "Bathroom lighting",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "c3b58f77-b706-4e89-bab8-dba73289c664",
     "name": "Bathroom rug",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "3c628112-666e-44b7-8fff-94338544a286",
     "name": "Bathroom sink",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "570b93a5-d298-4de2-8f70-09b20b25cfb8",
     "name": "Bathroom textile",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "0e62ce30-0021-4952-8cbc-1e9ea483b15e",
     "name": "Bathtub",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "6a5706d6-36c8-4196-8d1e-23c0e54c3d13",
     "name": "Bed",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "824f76a5-9338-4eb1-95ee-7611bb6a90ba",
     "name": "Bench",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "3d5b9c51-4fa0-483f-bf73-ea69e2a95be0",
     "name": "Blanket",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "e082ea44-7acb-419a-bc7f-329774a2c8b0",
     "name": "Bookshelf",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "019de6e9-957f-4d4d-934a-902d62730eed",
     "name": "Bowl",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "6e87041f-ed5c-4ef0-b3b5-260534672742",
     "name": "Buffet",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "132a732f-9a6b-4531-94e9-92105e88b84d",
     "name": "Carts and trays",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "43127cd0-9ba5-4928-9287-cb0e0851f413",
     "name": "Ceiling lamp",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "6c714898-d744-4f93-a6c6-aa808a88e760",
     "name": "Chair",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "2f03b8f9-079f-494a-86ec-4710828eadfd",
     "name": "Chaise longue",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "3109bbf6-e3c9-49c4-b27b-34a54e0533ff",
     "name": "Chest of drawers",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "a6116573-862a-4829-9fd9-c0ba2c98475d",
     "name": "Children’s tables",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "e461dac7-bfe6-4a73-9211-f5c73f6f2cd2",
     "name": "Children’s tableware",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "a1e11048-3922-4034-a9c2-d41e72748e52",
     "name": "Clock",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "ee4ad62e-1141-42de-8c54-ef8ec4ac32e6",
     "name": "Clothes rack",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "8cc39e2d-6b27-493f-b713-0a8c07fb4866",
     "name": "Coffee cup",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "fe1a7433-df82-4299-aa7f-cfc0475796f0",
     "name": "Coffee pot",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "9f021641-75e3-4db6-abf4-b3f300c6e152",
     "name": "Coffee table",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "084cb742-a7fd-4a56-a09c-f42334a79fe7",
     "name": "Cookware",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "a5e1f95f-fbd6-48cd-ab37-861fa453fa64",
     "name": "Cot",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "1b1ec745-7560-4a26-9c8f-206b2056c7f3",
     "name": "Creamer",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "49c44502-348d-4e30-a60d-ce96f050968e",
     "name": "Curtains",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "e929efed-4b8a-4542-a121-d98d3665fbd8",
     "name": "Cushion",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "4d31b358-71e4-4d22-a438-e5d7b854bed8",
     "name": "Cutlery",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "740d1752-a7d2-405b-998f-4320cf1e4a0c",
     "name": "Decoration",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "c1e5f8ee-ff86-4766-a8d4-28a32c11d8d0",
     "name": "Deep plate",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "eb333380-018e-4b0a-a473-72c47d108de4",
     "name": "Desk",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "27daed7e-55d6-4855-ab7a-2b0b84254f8a",
     "name": "Dining chairs",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "e73c9fed-b100-4b9a-9943-4e041e37d17c",
     "name": "Dining table",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "277b5062-9723-415e-85ec-7cc8396d2a9e",
     "name": "Doormat",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "f4571492-e823-4402-b9e3-ef6188f22fef",
     "name": "Dresser",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "1238ee79-750d-42c3-ad86-2896ccac0fdb",
     "name": "Drying rack",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "014ac4d5-ca49-4a2d-ad82-1b9e267f555e",
     "name": "Egg cup",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "f9074c99-c6a0-4320-a9aa-8579d693b8a5",
     "name": "Fan",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "c8793147-bb20-49a7-8b45-d8604c758c54",
     "name": "Floor cushion",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "608ee2c3-a970-426f-964c-eee2c52ef316",
     "name": "Floor lamp",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "30b7d91e-7f60-4e8b-a84c-94ebc08205d3",
     "name": "Flooring",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "5d17587a-329d-4ff1-bfd1-94db8ed6c46b",
     "name": "Garden decor",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "e56468df-c4ec-4245-95dc-15afe40a326c",
     "name": "Garden furniture",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "af25f627-5eaa-494f-ba83-5b210bc3d525",
     "name": "Garden lighting",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "34ecfecf-789d-4514-973d-f0be1f738754",
     "name": "Garden sculpture",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "ecf37715-ad57-4c2a-998b-b5bec3114f8f",
     "name": "Garden storage",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "c5c6172c-186a-4061-b832-924aedd1429f",
     "name": "Glassware",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "86e92f14-8caf-4bf2-94aa-5891fd3c3c99",
     "name": "Guest bed",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "88abba27-6647-407d-bc1a-2f90a24e4356",
     "name": "Hooks",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "11129576-2d5f-48dc-8732-97189ba065c9",
     "name": "Ironing board",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "a1ef9170-bf49-44b3-9397-42286dc1766b",
     "name": "Kid’s bed",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "00167dec-27cd-4a33-a023-43b7cc641a9b",
     "name": "Kid’s chair",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "46b156f7-ec4e-44ce-9009-eb8deddfb972",
     "name": "Kid’s decoration",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "babe58ea-5f2f-491b-a3c9-99704df2a7b0",
     "name": "Kid’s lighting",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "cdeadc33-4bf9-4d09-ab6a-c986b9f16509",
     "name": "Kid’s rug",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "2d31c7e6-a814-4b5b-94e6-0dc814081da1",
     "name": "Kid’s storage",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "c24b71b3-b4ea-43ca-95f0-6e6c411efc91",
     "name": "Kid’s textile",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "14251fdd-2007-4912-a3a6-ac0b710939af",
     "name": "Kid’s wardrobe",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "5373af94-0be6-498c-be28-f652f8aca2ad",
     "name": "Kitchen appliences",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "d4475061-7353-4710-a14e-f6e62eeae54a",
     "name": "Kitchen cabinet",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "69d95f64-ef7b-42c4-ae6e-1f3663308821",
     "name": "Kitchen organizer",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "8b5621da-fe02-4824-8ce5-4fd9cc976b01",
     "name": "Kitchen sink",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "08f4b2b1-015b-44ea-b19c-592baa8eea7b",
     "name": "Kitchen table",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "2abb3d18-d4be-4a40-b43b-71a5085ba9c3",
     "name": "Kitchen textile",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "2e161756-a72b-4e4f-b7fd-f43e42e272ec",
     "name": "Laundry basket",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "d320672f-5c5d-4508-b9c3-20fa4ac3884c",
     "name": "Linens",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "622a23c5-bb38-46e1-936e-2d3be78c154e",
     "name": "Milk jug",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "a183ff3e-45d0-445b-a010-67a25fd5d471",
     "name": "Mirror",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "3124fd4a-931c-4cba-a00c-e9659b7c7938",
     "name": "Ottoman",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "a943ab48-5e57-453e-9db5-d2ba95a6a03f",
     "name": "Painting",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "bc486658-baf8-4562-b63e-217b92f89c24",
     "name": "Parasol",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "07c8ae68-4e9e-4b42-8435-023110189ae4",
     "name": "Photography",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "fc18e7aa-f9df-4267-bd33-69afeeb664e0",
     "name": "Plate",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "d04f88a9-2804-4974-8192-bb8434e2cbfc",
     "name": "Poster",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "93378e59-7d19-4090-9d79-c1b5112ee431",
     "name": "Room divider",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "fa719b00-80be-4013-af2a-e02c0cc2cca1",
     "name": "Rug",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "d63e857f-1010-474e-907f-f5cf72f0064d",
     "name": "Saucer",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "fe6722e7-99b4-4907-8d97-f565f3656e7e",
     "name": "Sculpture",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "fbc14ec7-0183-47e5-8b98-2ffd89a6b590",
     "name": "Serving dish",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "b5c7ad89-7e01-4daa-8543-77eab6bfe447",
     "name": "Shelving unit",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "bb962f63-31ca-421c-825b-78fb865e9847",
     "name": "Shoe rack",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "7838e0bd-3cf3-4f96-8ba9-37b40a36d723",
     "name": "Shower",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "55281e51-fb6a-4175-a24d-904fa8f5da62",
     "name": "Side plate",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "8c430cc4-bd79-4c4c-92e2-b417427891b9",
     "name": "Side table",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "b96ec656-4649-4e66-8e92-1b816d596674",
     "name": "Sideboard",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "cce00472-d8a4-43b1-a64d-50bd0e0d399f",
     "name": "Sofa",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "fd3ddb1a-6743-447b-9fd6-a99fb426d0bd",
     "name": "Sugar basin",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "13983f1a-4584-42d2-bb8b-0bee3e6a1cd8",
     "name": "Sun lounger",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "e4b5868b-85b5-40c1-8efb-09550023f646",
     "name": "Table accessories",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "433f5293-6ca1-49bc-8b15-e99d98a2703d",
     "name": "Table lamp",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "260f5c00-ddea-43c7-bd28-4ef87c6549cb",
     "name": "Tapestry",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "787ec002-6fe3-4c97-a5bb-2260fc15a546",
     "name": "Tea cup",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "a500f40d-01e8-48ba-a7c4-8b225ad4f875",
     "name": "Tea pot",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "f689fcfd-b694-4aa1-a488-b78fcf968823",
     "name": "Toilet",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "3b4605cb-50c8-443b-8bc8-ef2bbb3be8dd",
     "name": "Toy",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "fb65c499-e08e-4038-9845-b3c84facf985",
     "name": "Wall decor",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "739e052e-4fcc-4e26-9219-8d85e600a6e3",
     "name": "Wall lamp",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "c467a6ca-6f46-41a9-b468-e1d69d4b2bdb",
     "name": "Wall shelf",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "351e54af-6e17-4f01-aacd-7c0c8b183464",
     "name": "Wall shelf",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "957a4845-0a88-4fe3-95a4-a8c16d39f957",
     "name": "Wallpaper",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "0a2a559b-4749-49da-94c0-bd6000603f2b",
     "name": "Wardrobe",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "d244c6a0-6a71-43af-bd60-a0890bd84b4a",
     "name": "Water jug",
-    "category": "itemType"
+    "category": "item"
   },
   {
     "id": "ec1477db-8b98-4b11-b381-8cb8051de797",
     "name": "Wine rack",
-    "category": "itemType"
+    "category": "item"
   }
 ]
