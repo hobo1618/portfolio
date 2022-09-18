@@ -1,4 +1,4 @@
-import { useRef, ElementType } from "react";
+import { useRef, ElementType, memo } from "react";
 import { v4 as uuidV4 } from "uuid";
 import useBinPackingLayout from "./useBinPackingLayout";
 
@@ -16,7 +16,7 @@ interface Block {
   };
 }
 
-const BinpackingLayout = ({ blocks, Component }: ComponentProps) => {
+const BinpackingLayout = memo(({ blocks, Component }: ComponentProps) => {
   const containerRef = useRef(null);
   const [blocksToRender, containerHeight] = useBinPackingLayout(
     blocks,
@@ -55,6 +55,6 @@ const BinpackingLayout = ({ blocks, Component }: ComponentProps) => {
       })}
     </div>
   );
-};
+});
 
 export { BinpackingLayout };
