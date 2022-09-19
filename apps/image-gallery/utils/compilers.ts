@@ -1,4 +1,4 @@
-export default (tags, images) => {
+export const compileTagsObject = (tags, images) => {
   let tagsObject = {};
   tags.map((tag) =>
     images.map((image) => {
@@ -11,4 +11,10 @@ export default (tags, images) => {
     })
   );
   return tagsObject
+};
+
+export const compileFilterTags = (categories) => {
+  let filterTags = {};
+  categories.map((category) => (filterTags[category] = []));
+  return filterTags
 };
