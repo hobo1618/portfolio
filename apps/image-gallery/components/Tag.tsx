@@ -25,6 +25,7 @@ const defaultInactiveStyle = {
 
 const Tag = ({
   tag,
+  name,
   action,
   status,
   selectedStyle = defaultSelectedStyle,
@@ -35,7 +36,7 @@ const Tag = ({
 
   const handleClick = () => {
     setIsActive(!isActive);
-    action(tag.id);
+    action(tag);
   };
 
   return (
@@ -48,9 +49,8 @@ const Tag = ({
           ? { ...unselectedStyle }
           : { ...inactiveStyle }
       }
-      // style={isActive ? { ...selectedStyle } : { ...unselectedStyle }}
     >
-      {tag.name}
+      {name}
     </button>
   );
 };

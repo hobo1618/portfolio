@@ -18,8 +18,10 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
     tagsObject,
   } = useGalleryStore((state) => state);
 
-  const handleTagClick = (id) => {
-    filterTags.includes(id) ? removeFilterTag(id) : addFilterTag(id);
+  const handleTagClick = ({ id, category }) => {
+    filterTags[category].includes(id)
+      ? removeFilterTag(id, category)
+      : addFilterTag(id, category);
   };
 
   useEffect(() => {
@@ -27,10 +29,10 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
     logState();
   }, [filteredImages]);
 
-  const handleTagStatus = (id) => {
+  const handleTagStatus = ({ id, category }) => {
     return !tagsObject[id]
       ? "inactive"
-      : filterTags.includes(id)
+      : filterTags[category] && filterTags[category].includes(id)
       ? "selected"
       : "unselected";
   };
@@ -79,7 +81,8 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
                 <Tag
                   key={tag.id}
                   tag={tag}
-                  status={handleTagStatus(tag.id)}
+                  name={tag.name}
+                  status={handleTagStatus(tag)}
                   action={handleTagClick}
                 />
               );
