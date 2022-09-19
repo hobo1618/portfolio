@@ -6,8 +6,6 @@ export default (items, itemsPerBin) => {
   let sets = new Array(totalBins);
   for (let i = 0; i < sets.length; i++) {
     sets[i] = items.slice(i * itemsPerBin, (i + 1) * itemsPerBin);
-    console.log(sets[i]);
-    
   }
   return sets;
 };
