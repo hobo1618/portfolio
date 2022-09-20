@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PlusMinusButton, TagsList } from "ui";
 import { useGalleryStore } from "store/galleryStore";
+import styles from "styles/CollapsibleTagsList.module.css"
 
 const CollapsibleTagsList = ({ tags, category }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,8 +42,11 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
         style={{
           margin: "0 1rem 0 1rem",
           height: isOpen ? "auto" : "0px",
+          maxHeight: "10rem",
+          overflowY: "auto",
           visibility: isOpen ? "visible" : "hidden",
         }}
+        className={styles.customScrollbars__content}
       >
         <TagsList
           tags={tags}
