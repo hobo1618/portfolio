@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Tag from "components/Tag";
-import compileTagsObject from "utils/compileTagsObject";
 import { useGalleryStore } from "store/galleryStore";
 
 const CollapsibleTagsList = ({ tags, category }: Props) => {
@@ -12,30 +11,22 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
     addFilterTag,
     removeFilterTag,
     filterTags,
-    logState,
     filteredImages,
     updateTagsObject,
-    tagsObject,
+    setImageArrOnAllTags,
   } = useGalleryStore((state) => state);
 
   const handleTagClick = ({ id, category }) => {
     filterTags[category].includes(id)
       ? removeFilterTag(id, category)
       : addFilterTag(id, category);
+
+    setImageArrOnAllTags(id, category);
   };
 
   useEffect(() => {
     updateTagsObject(tags, filteredImages);
-    logState();
   }, [filteredImages]);
-
-  const handleTagStatus = ({ id, category }) => {
-    return !tagsObject[id]
-      ? "inactive"
-      : filterTags[category] && filterTags[category].includes(id)
-      ? "selected"
-      : "unselected";
-  };
 
   return (
     <div>
@@ -82,7 +73,8 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
                   key={tag.id}
                   tag={tag}
                   name={tag.name}
-                  status={handleTagStatus(tag)}
+                  selected={tag.selected}
+                  active={tag.active}
                   action={handleTagClick}
                 />
               );

@@ -1,7 +1,11 @@
 import create from "zustand";
 import objects from "data/json/items.json";
 import categories from "data/json/categories.json";
-import { compileTagsObject, compileFilterTags } from "utils/compilers";
+import {
+  compileTagsObject,
+  compileFilterTags,
+  compileTags,
+} from "utils/compilers";
 import {
   includesEvery,
   includesSome,
@@ -11,9 +15,13 @@ import {
 import tags from "data/json/tags.json";
 
 export const useGalleryStore = create<GalleryState>((set) => ({
-  // images
   images: objects,
   filteredImages: objects,
+  tags: compileTags(tags, objects),
+  filterTags: compileFilterTags(categories),
+  tagsObject: compileTagsObject(tags, objects, categories),
+
+
   filterImages: (tags, images) =>
     set((state) => {
       let newFilteredImages = [...state.images];
@@ -25,31 +33,46 @@ export const useGalleryStore = create<GalleryState>((set) => ({
       );
       return { filteredImages: newFilteredImages };
     }),
-  // filter tags
-  tags: tags,
-  filterTags: compileFilterTags(categories),
-  tagsObject: compileTagsObject(tags, objects),
   logState: () =>
     set((state) => {
-      console.log(state);
       return state;
     }),
+  setTagStatus: (id, selected) => {
+    set((state) => {
+      let newTags = [...state.tags];
+      const tagIndex = newTags.findIndex((tag) => tag.id == id);
+      newTags[tagIndex].selected = selected;
+      return { tags: newTags };
+    });
+  },
+  toggleTagStatus: (id) => {
+    set((state) => {
+      let newTags = [...state.tags];
+      const tagIndex = newTags.findIndex((tag) => tag.id == id);
+      newTags[tagIndex].selected = !newTags[tagIndex].selected;
+      return { tags: newTags };
+    });
+  },
+  setImageArrOnAllTags: (id, category) => {
+    set((state) => {
+      let newFilteredImages = [...state.filteredImages]
+      let newTags = compileTags(tags, newFilteredImages, category, id)
+      state.toggleTagStatus(id)
+      return { tags: newTags };
+    });
+  },
   updateTagsObject: (tags, filteredImages) => {
     set((state) => {
-      const newTagsObject = compileTagsObject(tags, filteredImages);
-      state.logState()
-      
+      const newTagsObject = compileTagsObject(tags, filteredImages, categories);
+      state.logState();
       return { tagsObject: newTagsObject };
     });
   },
   addFilterTag: (tagId, category) =>
     set((state) => {
-      // console.log(state);
       let filterTags2 = { ...state.filterTags };
       filterTags2[category].push(tagId);
-      // filterTags2.push(tagId);
       state.filterImages(filterTags2, objects);
-      // const newTagsObject = compileTagsObject(tags, state.filteredImages);
       return { filterTags: filterTags2 };
     }),
   removeFilterTag: (tagId, category) =>
@@ -57,10 +80,7 @@ export const useGalleryStore = create<GalleryState>((set) => ({
       let filterTags2 = { ...state.filterTags };
       let result = filterTags2[category].filter((id) => id != tagId);
       filterTags2[category] = result;
-      console.log(filterTags2);
       state.filterImages(filterTags2, objects);
-      // const newTagsObject = compileTagsObject(tags, state.filteredImages);
-
       return { filterTags: filterTags2 };
     }),
 }));

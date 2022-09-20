@@ -27,7 +27,8 @@ const Tag = ({
   tag,
   name,
   action,
-  status,
+  selected,
+  active,
   selectedStyle = defaultSelectedStyle,
   unselectedStyle = defaultUnselectedStyle,
   inactiveStyle = defaultInactiveStyle,
@@ -43,11 +44,11 @@ const Tag = ({
     <button
       onClick={() => handleClick()}
       style={
-        status == "selected"
-          ? { ...selectedStyle }
-          : status == "unselected"
-          ? { ...unselectedStyle }
-          : { ...inactiveStyle }
+        !active
+          ? { ...inactiveStyle }
+          : selected
+          ?  {...selectedStyle }
+          : { ...unselectedStyle }
       }
     >
       {name}
