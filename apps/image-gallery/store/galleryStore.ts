@@ -19,7 +19,7 @@ export const useGalleryStore = create<GalleryState>((set) => ({
   filteredImages: objects,
   tags: compileTags(tags, objects),
   filterTags: compileFilterTags(categories),
-  tagsObject: compileTagsObject(tags, objects, categories),
+  // tagsObject: compileTagsObject(tags, objects, categories),
 
 
   filterImages: (tags, images) =>
@@ -61,13 +61,13 @@ export const useGalleryStore = create<GalleryState>((set) => ({
       return { tags: newTags };
     });
   },
-  updateTagsObject: (tags, filteredImages) => {
-    set((state) => {
-      const newTagsObject = compileTagsObject(tags, filteredImages, categories);
-      state.logState();
-      return { tagsObject: newTagsObject };
-    });
-  },
+  // updateTagsObject: (tags, filteredImages) => {
+  //   set((state) => {
+  //     const newTagsObject = compileTagsObject(tags, filteredImages, categories);
+  //     state.logState();
+  //     return { tagsObject: newTagsObject };
+  //   });
+  // },
   addFilterTag: (tagId, category) =>
     set((state) => {
       let filterTags2 = { ...state.filterTags };

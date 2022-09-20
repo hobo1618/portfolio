@@ -24,9 +24,9 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
     setImageArrOnAllTags(id, category);
   };
 
-  useEffect(() => {
-    updateTagsObject(tags, filteredImages);
-  }, [filteredImages]);
+  // useEffect(() => {
+  //   updateTagsObject(tags, filteredImages);
+  // }, [filteredImages]);
 
   return (
     <div>

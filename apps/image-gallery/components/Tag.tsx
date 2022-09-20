@@ -1,26 +1,29 @@
 import { useState } from "react";
 type Props = {};
 
+const baseStyle = {
+  borderRadius: "2rem",
+  margin: "2px"
+};
+
 const defaultSelectedStyle = {
   color: "black",
   backgroundColor: "white",
   border: "2px solid white",
-  borderRadius: "2rem",
   padding: "0.5rem",
 };
 
 const defaultUnselectedStyle = {
   color: "white",
   border: "2px solid white",
-  borderRadius: "2rem",
   padding: "0.5rem",
 };
 
 const defaultInactiveStyle = {
-  color: "black",
-  border: "2px solid gray",
-  borderRadius: "2rem",
+  color: "gray",
+  border: "1px solid gray",
   padding: "0.5rem",
+  cursor: "auto",
 };
 
 const Tag = ({
@@ -36,8 +39,10 @@ const Tag = ({
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => {
-    setIsActive(!isActive);
-    action(tag);
+    if (active) {
+      setIsActive(!isActive);
+      action(tag);
+    }
   };
 
   return (
@@ -45,10 +50,10 @@ const Tag = ({
       onClick={() => handleClick()}
       style={
         !active
-          ? { ...inactiveStyle }
+          ? { ...baseStyle, ...inactiveStyle }
           : selected
-          ?  {...selectedStyle }
-          : { ...unselectedStyle }
+          ? { ...baseStyle, ...selectedStyle }
+          : { ...baseStyle, ...unselectedStyle }
       }
     >
       {name}

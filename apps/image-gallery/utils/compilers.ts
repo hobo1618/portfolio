@@ -1,5 +1,3 @@
-import { takeRight } from "lodash";
-
 export const compileTagsObject = (tags, images, categories) => {
   let tagsObject = {};
   categories.map((category) => {
@@ -27,10 +25,11 @@ export const compileFilterTags = (categories) => {
 
 export const compileTags = (tags, images, category?) => {
   return tags.map((tag) => {
+    // runs on init
     if (!tag.selected) {
       tag.selected = false;
     }
-    if (!tag.active) {
+    if (!tag.active === undefined) {
       tag.active = true;
     }
 
@@ -40,10 +39,12 @@ export const compileTags = (tags, images, category?) => {
         tag.images.push(tag.id);
       }
     });
-    // tag.images.length > 0 ? (tag.active = true) : (tag.active = false);
-    tag.images.length > 0 || tag.category == category
-      ? (tag.active = true)
-      : (tag.active = false);
+
+    // runs if the clicked tag isn't in the category
+    if (tag.category != category) {
+      tag.images.length > 0 ? (tag.active = true) : (tag.active = false);
+    }
+
     return tag;
   });
 };
