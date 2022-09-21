@@ -3,5 +3,6 @@ export * from "./Button";
 export * from "./TagsList";
 export * from "./Tag";
 export * from "./PlusMinusButton";
+export * from "./FavoriteButton";
 export * from "./BlurImage";
 export * from "./binpackingLayout/BinpackingLayout";

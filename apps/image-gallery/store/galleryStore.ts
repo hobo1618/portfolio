@@ -65,4 +65,13 @@ export const useGalleryStore = create<GalleryState>((set) => ({
       state.filterImages(filterTags2, objects);
       return { filterTags: filterTags2 };
     }),
+  toggleFavorite: (id, isFavorite) =>
+    set((state) => {
+      let newImages = [ ...state.images ];
+      const indexToChange = newImages.findIndex((image) => image.id == id);
+      console.log(indexToChange);
+      
+      newImages[indexToChange].favorite = !isFavorite;
+      return { images: newImages };
+    }),
 }));
