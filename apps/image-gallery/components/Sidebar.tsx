@@ -1,6 +1,7 @@
 import { memo } from "react";
 import CollapsibleTagsList from "components/CollapsibleTagsList";
 import { v4 as uuidV4 } from "uuid";
+import styles from "styles/Sidebar.module.css";
 
 export default memo(({ categories, tags }) => {
   return (
@@ -9,11 +10,11 @@ export default memo(({ categories, tags }) => {
         flexBasis: "25rem",
         position: "sticky",
         height: "100vh",
-        maxHeight: "100vh",
-        overflowY: "hidden",
+        overflowY: "auto",
         top: "0",
         background: "black",
       }}
+      className={styles.customScrollbar}
     >
       <div style={{ margin: "1rem" }}>
         <h1 style={{ fontSize: "72px", color: "white", margin: "0" }}>

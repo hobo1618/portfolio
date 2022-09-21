@@ -16,6 +16,7 @@ const Home: NextPage = () => {
         display: "flex",
         flexDirection: "row",
         alignItems: "flex-start",
+        overflowX: "clip" 
         // maxHeight: "100vh",
       }}
     >

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PlusMinusButton, TagsList } from "ui";
 import { useGalleryStore } from "store/galleryStore";
-import styles from "styles/CollapsibleTagsList.module.css"
+import styles from "styles/CollapsibleTagsList.module.css";
 
 const CollapsibleTagsList = ({ tags, category }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +33,7 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
           justifyContent: "space-between",
           alignItems: "center",
           margin: "0 1rem 0 1rem",
+          background: "rgba(255,0,0,0)",
         }}
       >
         <h1 style={{ color: "white" }}>{category}</h1>
