@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { PlusMinusButton, TagsList } from "ui";
 import { useGalleryStore } from "store/galleryStore";
 import styles from "styles/CollapsibleTagsList.module.css";
+import shallow from "zustand/shallow";
 
-const CollapsibleTagsList = ({ tags, category }: Props) => {
+const CollapsibleTagsList = memo(({ tags, category }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-  const { addFilterTag, removeFilterTag, filterTags, setImageArrOnAllTags } =
+  const { addFilterTag, removeFilterTag, setImageArrOnAllTags } =
     useGalleryStore((state) => state);
+
+  const filterTags = useGalleryStore((state) => state.filterTags, shallow);
 
   const handleTagClick = ({ id, category }) => {
     filterTags[category].includes(id)
@@ -37,7 +37,10 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
         }}
       >
         <h1 style={{ color: "white" }}>{category}</h1>
-        <PlusMinusButton handleClick={handleClick} isOpen={isOpen} />
+        <PlusMinusButton
+          handleClick={() => setIsOpen(!isOpen)}
+          isOpen={isOpen}
+        />
       </div>
       <div
         style={{
@@ -58,5 +61,5 @@ const CollapsibleTagsList = ({ tags, category }: Props) => {
       <hr style={{ marginTop: "10px", width: "100%" }} />
     </div>
   );
-};
+});
 export default CollapsibleTagsList;

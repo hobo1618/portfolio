@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import type { NextPage } from "next";
+import shallow from "zustand/shallow";
 import tags from "data/json/tags.json";
 import categories from "data/json/categories.json";
 import { v4 as uuidV4 } from "uuid";
@@ -10,19 +11,18 @@ import Sidebar from "components/Sidebar";
 
 const HoverOverlay = (props) => {
   const { toggleFavorite } = useGalleryStore((state) => state);
+
   const favorite = useGalleryStore(
-    useCallback((state) => {
-      return state.images[
-        state.images.findIndex((image) => image.id == props.id)
-      ].favorite;
-    },[])
+    useCallback((state) => state.favorites[props.id], [props.id]),
+    shallow
   );
 
-  console.log(favorite);
+  const handleClick = () => {
+    toggleFavorite(props.id);
+  };
 
-  // const Component = props.Component
   const [isHovering, setIsHovering] = useState(false);
-  // const [isFavorite, setIsFavorite] = useState(props.favorite);
+
   return (
     <div
       onMouseEnter={() => setIsHovering(true)}
@@ -46,7 +46,7 @@ const HoverOverlay = (props) => {
           }}
         >
           <FavoriteButton
-            handleClick={() => toggleFavorite(props.id, props.favorite)}
+            handleClick={() => handleClick()}
             isFavorite={favorite}
           />
         </div>
@@ -56,7 +56,11 @@ const HoverOverlay = (props) => {
 };
 
 const Home: NextPage = () => {
-  const { filteredImages } = useGalleryStore((state) => state);
+  const filteredImages = useGalleryStore(
+    (state) => state.filteredImages,
+    shallow
+  );
+  // const tags = useGalleryStore((state) => state.tags, shallow);
   return (
     <div
       style={{
@@ -64,7 +68,6 @@ const Home: NextPage = () => {
         flexDirection: "row",
         alignItems: "flex-start",
         overflowX: "clip",
-        // maxHeight: "100vh",
       }}
     >
       <Sidebar categories={categories} tags={tags} />
@@ -75,14 +78,12 @@ const Home: NextPage = () => {
           flexDirection: "column",
         }}
       >
-        {/* <BinpackingLayout blocks={filteredImages} Component={BlurImage} /> */}
         {createSets(filteredImages, 5).map((set) => (
           <BinpackingLayout
             key={uuidV4()}
             blocks={set}
             Component={HoverOverlay}
           />
-          // <BinpackingLayout key={uuidV4()} blocks={set} Component={BlurImage} />
         ))}
       </div>
     </div>
