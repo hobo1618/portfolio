@@ -6,8 +6,15 @@ import categories from "data/json/categories.json";
 import { v4 as uuidV4 } from "uuid";
 import createSets from "utils/createSets";
 import { useGalleryStore } from "store/galleryStore";
-import { BlurImage, BinpackingLayout, FavoriteButton } from "ui";
+import {
+  BlurImage,
+  BinpackingLayout,
+  FavoriteButton,
+  DoubleArrowButton,
+  FilterButton,
+} from "ui";
 import Sidebar from "components/Sidebar";
+import styles from "styles/Sidebar.module.css";
 
 const HoverOverlay = (props) => {
   const { toggleFavorite } = useGalleryStore((state) => state);
@@ -48,6 +55,7 @@ const HoverOverlay = (props) => {
           <FavoriteButton
             handleClick={() => handleClick()}
             isFavorite={favorite}
+            size="200px"
           />
         </div>
       )}
@@ -56,6 +64,7 @@ const HoverOverlay = (props) => {
 };
 
 const Home: NextPage = () => {
+  const [sidebarVisible, setSidebarVisible] = useState(false);
   const filteredImages = useGalleryStore(
     (state) => state.filteredImages,
     shallow
@@ -70,14 +79,50 @@ const Home: NextPage = () => {
         overflowX: "clip",
       }}
     >
-      <Sidebar categories={categories} tags={tags} />
+      <div
+        style={{
+          flexBasis: sidebarVisible ? "25rem" : "0",
+          position: "sticky",
+          // offset: sidebarVisible ? "auto" : "25rem 0",
+          height: "100vh",
+          overflowY: "auto",
+          top: "0",
+          background: "black",
+        }}
+        className={styles.customScrollbar}
+      >
+        <Sidebar categories={categories} tags={tags} />
+      </div>
       <div
         style={{
           display: "flex",
           flexGrow: 4,
           flexDirection: "column",
+          position: "relative",
         }}
       >
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            left: sidebarVisible ? "25rem" : "0",
+            zIndex: "3",
+          }}
+        >
+          {sidebarVisible ? (
+            <DoubleArrowButton
+              handleClick={() => setSidebarVisible(!sidebarVisible)}
+              direction="left"
+              size="100px"
+            />
+          ) : (
+            <FilterButton
+              handleClick={() => setSidebarVisible(!sidebarVisible)}
+              size="100px"
+            />
+          )}
+        </div>
+
         {createSets(filteredImages, 5).map((set) => (
           <BinpackingLayout
             key={uuidV4()}
