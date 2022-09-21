@@ -7,10 +7,10 @@ import tags from "data/json/tags.json";
 
 export const useGalleryStore = create<GalleryState>((set) => ({
   images: objects,
+  favorites: {},
   filteredImages: objects,
   tags: compileTags(tags, objects),
   filterTags: compileFilterTags(categories),
-
   filterImages: (tags, images) =>
     set((state) => {
       let newFilteredImages = [...state.images];
@@ -22,8 +22,24 @@ export const useGalleryStore = create<GalleryState>((set) => ({
       );
       return { filteredImages: newFilteredImages };
     }),
+  filterFavoriteImages: () => {
+    set((state) => {
+      // let newFilteredImages = [...state.images]
+      // console.log(newFilteredImages);
+      const newFilteredImages = state.images.filter(image => state.favorites[image.id])
+      return { filteredImages: newFilteredImages }
+    })
+  },
+  resetFilteredImages: () => {
+    set((state) => ({
+      ...state,
+      filteredImages: state.images
+    }))
+  },
   logState: () =>
     set((state) => {
+      console.log(state);
+
       return state;
     }),
   setTagStatus: (id, selected) => {
@@ -65,13 +81,12 @@ export const useGalleryStore = create<GalleryState>((set) => ({
       state.filterImages(filterTags2, objects);
       return { filterTags: filterTags2 };
     }),
-  toggleFavorite: (id, isFavorite) =>
+  toggleFavorite: (id) =>
     set((state) => {
-      let newImages = [ ...state.images ];
-      const indexToChange = newImages.findIndex((image) => image.id == id);
-      console.log(indexToChange);
-      
-      newImages[indexToChange].favorite = !isFavorite;
-      return { images: newImages };
+      let newFavorites = { ...state.favorites };
+      newFavorites[id] = !newFavorites[id];
+      return {
+        favorites: newFavorites,
+      };
     }),
 }));
