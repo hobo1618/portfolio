@@ -1,8 +1,31 @@
-import { memo, useState, useCallback } from "react";
-import CollapsibleTagsList from "components/CollapsibleTagsList";
+import { useState, memo } from "react";
+import tags from "data/json/tags.json";
 import { v4 as uuidV4 } from "uuid";
-import { FavoriteButton } from "ui";
 import { useGalleryStore } from "store/galleryStore";
+import { DoubleArrowButton, FilterButton, FavoriteButton } from "ui";
+import CollapsibleTagsList from "components/CollapsibleTagsList";
+import styles from "styles/Sidebar.module.css";
+
+interface SidebarProps extends SidebarVisibility {
+  categories: string[];
+}
+
+interface SidebarVisibility {
+  sidebarVisible: boolean;
+  setSidebarVisible: (sidebarVisible: boolean ) => void;
+}
+
+interface SidebarBodyProps {
+  categories: string[];
+  tags: Tag[];
+}
+
+interface Tag {
+  id: string;
+  name: string;
+  category: string;
+}
+
 
 const SidebarHeader = memo(() => {
   const { filterFavoriteImages, resetFilteredImages } = useGalleryStore(
@@ -25,10 +48,35 @@ const SidebarHeader = memo(() => {
   );
 });
 
-export default memo(({ categories, tags }) => {
+const SidebarIcon = ({ sidebarVisible, setSidebarVisible }: SidebarVisibility) => {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: "0",
+        left: sidebarVisible ? "25rem" : "0",
+        zIndex: "3",
+      }}
+    >
+      {sidebarVisible ? (
+        <DoubleArrowButton
+          handleClick={() => setSidebarVisible(!sidebarVisible)}
+          direction="left"
+          size="100px"
+        />
+      ) : (
+        <FilterButton
+          handleClick={() => setSidebarVisible(!sidebarVisible)}
+          size="100px"
+        />
+      )}
+    </div>
+  );
+};
+
+const SidebarBody = memo(({ categories, tags }: SidebarBodyProps) => {
   return (
     <>
-      <SidebarHeader />
       <hr style={{ margin: 0 }} />
       {categories.map((category) => (
         <CollapsibleTagsList key={uuidV4()} tags={tags} category={category} />
@@ -36,3 +84,37 @@ export default memo(({ categories, tags }) => {
     </>
   );
 });
+
+
+
+const Sidebar = ({
+  sidebarVisible,
+  setSidebarVisible,
+  categories,
+}: SidebarProps) => {
+  return (
+    <>
+      <div
+        style={{
+          flexBasis: sidebarVisible ? "25rem" : "0",
+          transition: " width 1s ease-in-out",
+          position: "sticky",
+          height: "100vh",
+          overflowY: "auto",
+          top: "0",
+          background: "black",
+        }}
+        className={styles.customScrollbar}
+      >
+        <SidebarHeader />
+        <SidebarBody categories={categories} tags={tags} />
+      </div>
+      <SidebarIcon
+        sidebarVisible={sidebarVisible}
+        setSidebarVisible={setSidebarVisible}
+      />
+    </>
+  );
+};
+
+export default Sidebar;

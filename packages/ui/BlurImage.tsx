@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./BlurImage.module.css";
+import { imageEffects } from "./BlurImage.module.css";
 
 type BlurImageProps = {
   width: number;
@@ -13,7 +13,7 @@ const BlurImage = ({ width, height, href }: BlurImageProps) => {
       width={width}
       height={height}
       src={`/assets/${href}`}
-      className={styles.imageEffects}
+      className={imageEffects}
     />
   );
 };

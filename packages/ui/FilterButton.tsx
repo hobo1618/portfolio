@@ -1,4 +1,8 @@
-export const FilterButton = ({ handleClick, size }) => {
+interface FilterButtonProps {
+  handleClick: () => void;
+  size: string;
+}
+export const FilterButton = ({ handleClick, size }: FilterButtonProps) => {
   return (
     <button onClick={() => handleClick()}>
       <svg viewBox="0 0 50 50" width={size} height={size}>

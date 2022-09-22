@@ -5,6 +5,49 @@ import { compileFilterTags, compileTags } from "utils/compilers";
 import { keepItemByOrWithinAndBetween, advancedFilter } from "utils/filters";
 import tags from "data/json/tags.json";
 
+interface Image {
+  id: string;
+  itemTags: string[];
+  href: string;
+  width: number;
+  height: number;
+  name?: string,
+}
+
+interface Tag {
+  id: string;
+  name: string;
+  category: string;
+  selected?: boolean;
+  // images: string[];
+}
+
+interface Favorites {
+  [key: string]: boolean;
+}
+
+interface FilterTags {
+  [key: string]: string[]
+}
+
+interface GalleryState {
+  images: Image[];
+  favorites: Favorites;
+  filteredImages: Image[];
+  tags: Tag[];
+  filterTags: FilterTags;
+  filterImages: (tags: FilterTags, images: Image[]) => void;
+  filterFavoriteImages: () => void;
+  resetFilteredImages: () => void;
+  setTagStatus: (id: string, selected: boolean) => void;
+  toggleTagStatus: (id: string) => void;
+  setImageArrOnAllTags: (id: string, category: string) => void;
+  addFilterTag: (tagId: string, category: string) => void;
+  removeFilterTag: (tagId: string, category: string) => void;
+  toggleFavorite: (id: string) => void;
+
+}
+
 export const useGalleryStore = create<GalleryState>((set) => ({
   images: objects,
   favorites: {},
@@ -13,6 +56,8 @@ export const useGalleryStore = create<GalleryState>((set) => ({
   filterTags: compileFilterTags(categories),
   filterImages: (tags, images) =>
     set((state) => {
+      console.log(tags);
+      
       let newFilteredImages = [...state.images];
       newFilteredImages = advancedFilter(
         images,
@@ -36,12 +81,6 @@ export const useGalleryStore = create<GalleryState>((set) => ({
       filteredImages: state.images
     }))
   },
-  logState: () =>
-    set((state) => {
-      console.log(state);
-
-      return state;
-    }),
   setTagStatus: (id, selected) => {
     set((state) => {
       let newTags = [...state.tags];
@@ -61,7 +100,7 @@ export const useGalleryStore = create<GalleryState>((set) => ({
   setImageArrOnAllTags: (id, category) => {
     set((state) => {
       let newFilteredImages = [...state.filteredImages];
-      let newTags = compileTags(tags, newFilteredImages, category, id);
+      let newTags = compileTags(tags, newFilteredImages, category);
       state.toggleTagStatus(id);
       return { tags: newTags };
     });
@@ -78,6 +117,8 @@ export const useGalleryStore = create<GalleryState>((set) => ({
       let filterTags2 = { ...state.filterTags };
       let result = filterTags2[category].filter((id) => id != tagId);
       filterTags2[category] = result;
+      console.log(filterTags2);
+      
       state.filterImages(filterTags2, objects);
       return { filterTags: filterTags2 };
     }),

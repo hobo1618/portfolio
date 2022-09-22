@@ -1,4 +1,9 @@
-export const FavoriteButton = ({ handleClick, isFavorite, size }) => {
+interface FavoriteButtonProps {
+  handleClick: () => void;
+  isFavorite: boolean;
+  size: string;
+}
+export const FavoriteButton = ({ handleClick, isFavorite, size }: FavoriteButtonProps) => {
   return (
     <button onClick={() => handleClick()}>
       <svg viewBox="0 0 50 50" width={size} height={size}>

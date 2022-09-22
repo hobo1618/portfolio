@@ -1,4 +1,13 @@
-export const DoubleArrowButton = ({ handleClick, direction, size }) => {
+interface DoubleArrowButtonProps {
+  handleClick: () => void;
+  direction?: "right" | "left";
+  size: string;
+}
+export const DoubleArrowButton = ({
+  handleClick,
+  direction,
+  size,
+}: DoubleArrowButtonProps) => {
   return (
     <button onClick={() => handleClick()}>
       <svg viewBox="0 0 50 50" width={size} height={size}>
