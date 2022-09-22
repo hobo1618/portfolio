@@ -1,19 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ElementType, RefObject } from "react";
 import FirstFitInfiniteHeight from "./FirstFitInfiniteHeight";
 import { debounce, cloneDeep } from "lodash";
 
-const firstFitInfiniteHeight = (blocks, width) => {
+interface Block {
+  width: number;
+  height: number;
+}
+
+const firstFitInfiniteHeight = (blocks: Block[], width: number) => {
   const deepBlocks = cloneDeep(blocks);
   const packer = new FirstFitInfiniteHeight(width);
   packer.fit(deepBlocks);
   return { orderedBlocks: deepBlocks, height: packer.height };
 };
 
-const getContainerDimensions = (ref) => {
-  if (ref.current) return ref.current.clientWidth;
+const getContainerDimensions = (ref: RefObject<HTMLDivElement>) => {
+  if (ref !== null && ref.current) return ref.current.clientWidth;
 };
 
-const useBinPackingLayout = (blocks, containerRef) => {
+const useBinPackingLayout = (
+  blocks: Block[],
+  containerRef: RefObject<HTMLDivElement>
+): [blocksToRender: Block[], containerHeight: number] => {
   const [blocksToRender, setBlocksToRender] = useState(blocks);
   const [loaded, setLoaded] = useState(false);
   // width is computed based on window event listener and ref
@@ -22,7 +30,7 @@ const useBinPackingLayout = (blocks, containerRef) => {
   const [containerHeight, setContainerHeight] = useState(0);
 
   useEffect(() => {
-    if (!loaded) {
+    if (!loaded && containerRef !== null) {
       setContainerWidth(getContainerDimensions(containerRef));
       setLoaded(true);
     }

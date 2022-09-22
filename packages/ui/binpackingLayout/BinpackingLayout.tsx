@@ -1,4 +1,4 @@
-import { useRef, ElementType, memo } from "react";
+import { useRef, ElementType, memo, RefObject } from "react";
 import { v4 as uuidV4 } from "uuid";
 import useBinPackingLayout from "./useBinPackingLayout";
 
@@ -17,7 +17,7 @@ interface Block {
 }
 
 const BinpackingLayout = memo(({ blocks, Component }: ComponentProps) => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [blocksToRender, containerHeight] = useBinPackingLayout(
     blocks,
     containerRef
