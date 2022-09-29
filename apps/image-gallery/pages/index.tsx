@@ -15,7 +15,6 @@ const Home: NextPage = () => {
     (state) => state.filteredImages,
     shallow
   );
-  // const tags = useGalleryStore((state) => state.tags, shallow);
   return (
     <div
       style={{
