@@ -80,4 +80,7 @@ const CollapsibleTagsList = memo(
     );
   }
 );
+
+CollapsibleTagsList.displayName = 'CollapsibleTagsList';
+
 export default CollapsibleTagsList;
