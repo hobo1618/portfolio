@@ -11,5 +11,6 @@
     "dev": {
       "cache": false
     }
-  }
+  },
+  "globalEnv": ["DB_USER", "DB_PASS"]
 }
