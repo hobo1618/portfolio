@@ -1,57 +1,41 @@
+interface Root {
+  height: number;
+  width: number | undefined;
+  x: number;
+  y: number;
+}
+
 interface Block {
   height: number;
   width: number;
-  fit?: Block;
+  fit?: INode;
 }
 
-interface InitialRoot {
+interface INode {
+  down: INode;
+  right: INode;
   height: number;
   width: number;
   x: number;
   y: number;
-  right?: InitialRoot;
-  down?: InitialRoot;
-}
-
-interface Root extends InitialRoot {
-  right: Root;
-  down: Root;
-  used: boolean;
-}
-
-interface Node {
-  used: boolean;
-  height: number;
-  width: number;
-  x: number;
-  y: number;
-  right: {
-    x: number;
-    y: number;
-    width: number,
-    height: number;
-  };
-  down: {
-      x: number;
-      y: number;
-      width: number,
-      height: number,
-    };
+  used?: boolean;
 }
 
 class FFDInfiniteHeight {
-  width: number;
-  root: InitialRoot;
+  width: number | undefined;
   height: number;
+  root: Root;
 
-  constructor(width: number) {
+  constructor(width: number | undefined) {
     this.width = width;
     this.height = 0;
     this.root = { x: 0, y: 0, width, height: 0 };
   }
 
   fit(blocks: Block[]) {
+    console.log(blocks);
     let node;
+
     blocks.sort((a, b) => b.height - a.height || b.width - a.width);
     blocks.map((block: Block) => {
       // if we find a good root, then we set node = root
@@ -73,7 +57,9 @@ class FFDInfiniteHeight {
     });
   }
 
-  findNode(root: Root, blockWidth: number, blockHeight: number): object | null {
+  findNode(root: any, blockWidth: number, blockHeight: number): object | null {
+    console.log(root);
+    
     if (root.used)
       return (
         // if root.right is undefined or root.down is undefined,
@@ -106,7 +92,7 @@ class FFDInfiniteHeight {
     } else return null;
   }
 
-  splitNode(node: Node, width: number, height: number) {
+  splitNode(node: any, width: number, height: number) {
     /* 
         this function:
         

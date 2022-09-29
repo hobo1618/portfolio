@@ -7,7 +7,9 @@ interface Block {
   height: number;
 }
 
-const firstFitInfiniteHeight = (blocks: Block[], width: number) => {
+type IContainerWidth = number | undefined;
+
+const firstFitInfiniteHeight = (blocks: Block[], width: number | undefined) => {
   const deepBlocks = cloneDeep(blocks);
   const packer = new FirstFitInfiniteHeight(width);
   packer.fit(deepBlocks);
@@ -15,7 +17,11 @@ const firstFitInfiniteHeight = (blocks: Block[], width: number) => {
 };
 
 const getContainerDimensions = (ref: RefObject<HTMLDivElement>) => {
-  if (ref !== null && ref.current) return ref.current.clientWidth;
+  if (ref == null) {
+    return 0
+  } else if (ref.current) {
+    return ref.current.clientWidth
+  }
 };
 
 const useBinPackingLayout = (
@@ -25,7 +31,7 @@ const useBinPackingLayout = (
   const [blocksToRender, setBlocksToRender] = useState(blocks);
   const [loaded, setLoaded] = useState(false);
   // width is computed based on window event listener and ref
-  const [containerWidth, setContainerWidth] = useState(0);
+  const [containerWidth, setContainerWidth] = useState<IContainerWidth>(0);
   // height is computed after the algorithm runs
   const [containerHeight, setContainerHeight] = useState(0);
 
