@@ -8,7 +8,8 @@
       "outputs": [
         "dist/**",
         ".next/**"
-      ]
+      ],
+      "env": ["DB_USER", "DB_PASS"]
     },
     "lint": {
       "outputs": []
@@ -20,9 +21,5 @@
   "globalDependencies": [
     ".env",
     ".env.local"
-  ],
-  "globalEnv": [
-    "DB_USER",
-    "DB_PASS"
   ]
 }
