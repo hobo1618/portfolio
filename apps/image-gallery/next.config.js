@@ -7,6 +7,9 @@ const nextConfig = {
   images: {
     domains: ["dummyimage.com"],
   },
+  eslint: {
+    ignoreDuringBuilds: true
+  }
 };
 
 module.exports = withTM(nextConfig);
