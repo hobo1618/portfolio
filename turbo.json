@@ -2,8 +2,13 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**"
+      ]
     },
     "lint": {
       "outputs": []
@@ -12,5 +17,12 @@
       "cache": false
     }
   },
-  "globalEnv": ["DB_USER", "DB_PASS"]
+  "globalDependencies": [
+    ".env",
+    ".env.local"
+  ],
+  "globalEnv": [
+    "DB_USER",
+    "DB_PASS"
+  ]
 }
