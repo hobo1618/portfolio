@@ -54,6 +54,7 @@ importers:
       lodash: ^4.17.21
       next: 12.2.5
       next-transpile-modules: 9.0.0
+      pocketbase: ^0.7.1
       react: 18.2.0
       react-dom: 18.2.0
       the-new-css-reset: ^1.7.3
@@ -68,6 +69,7 @@ importers:
       lodash: 4.17.21
       next: 12.2.5_biqbaboplfbrettd7655fr4n2y
       next-transpile-modules: 9.0.0
+      pocketbase: 0.7.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       the-new-css-reset: 1.7.3
@@ -2597,6 +2599,10 @@ packages:
     engines: {node: '>=6'}
     dev: true
     optional: true
+
+  /pocketbase/0.7.1:
+    resolution: {integrity: sha512-uA/Ltci3OrZ/sYfOjB/SCQX87xnB0Gowci0eUNgK7Sb0gk68Yy79ynTKgcmrw6wdXXVrY/vOoNR/DU8oahCBAA==}
+    dev: false
 
   /postcss-filter-plugins/3.0.1:
     resolution: {integrity: sha512-tRKbW4wWBEkSSFuJtamV2wkiV9rj6Yy7P3Y13+zaynlPEEZt8EgYKn3y/RBpMeIhNmHXFlSdzofml65hD5OafA==}
