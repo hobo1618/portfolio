@@ -87,11 +87,11 @@ const SidebarBody = memo(({ categories, tags }: SidebarBodyProps) => {
 
 
 
-const Sidebar = ({
+export default function Sidebar({
   sidebarVisible,
   setSidebarVisible,
   categories,
-}: SidebarProps) => {
+}: SidebarProps) {
   return (
     <>
       <div
@@ -116,6 +116,6 @@ const Sidebar = ({
     </>
   );
 };
-Sidebar.displayName = 'Sidebar';
+// Sidebar.displayName = 'Sidebar';
 
-export default Sidebar;
+// export default Sidebar;
