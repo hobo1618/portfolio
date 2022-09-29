@@ -86,7 +86,7 @@ const SidebarBody = memo(({ categories, tags }: SidebarBodyProps) => {
 });
 
 
-
+/* eslint-disable react/display-name */
 export default function Sidebar({
   sidebarVisible,
   setSidebarVisible,
