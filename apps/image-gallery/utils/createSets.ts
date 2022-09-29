@@ -1,4 +1,4 @@
-export default (items, itemsPerBin) => {
+export default (items: any[], itemsPerBin: number) => {
   const totalItems = items.length;
   const fullBins = Math.floor(totalItems / itemsPerBin);
   const remainingItems = totalItems - fullBins * itemsPerBin;
