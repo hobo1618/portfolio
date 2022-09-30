@@ -1,4 +1,10 @@
-export const PlusMinusButton = ({ handleClick, isOpen }) => {
+interface Props {
+  handleClick: () => void;
+  isOpen: boolean
+}
+
+
+export const PlusMinusButton = ({ handleClick, isOpen }: Props) => {
   return (
     <button onClick={() => handleClick()}>
       <svg viewBox="0 0 50 50" width="50px" height="50px">

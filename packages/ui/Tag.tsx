@@ -1,5 +1,14 @@
 import { useState } from "react";
-type Props = {};
+type Props = {
+  tag: object,
+  name: string,
+  action: (tag: object) => void;
+  selected: boolean;
+  active: boolean;
+  selectedStyle?: object;
+  unselectedStyle?: object;
+  inactiveStyle?: object;
+};
 
 const baseStyle = {
   borderRadius: "2rem",

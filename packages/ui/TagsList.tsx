@@ -1,6 +1,17 @@
 import Tag from "./Tag";
-
-export const TagsList = ({ tags, category, handleTagClick }) => {
+interface Props {
+  handleTagClick: () => void;
+  category: string;
+  tags: Tag[];
+}
+interface Tag {
+  id: string;
+  category: string;
+  selected: boolean;
+  active: boolean;
+  name: string;
+}
+export const TagsList = ({ tags, category, handleTagClick }: Props) => {
   return (
     <>
       {tags.map((tag) => {
