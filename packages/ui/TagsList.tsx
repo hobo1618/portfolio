@@ -4,13 +4,13 @@ interface Props {
   category: string;
   tags: Tag[];
 }
-// interface Tag {
-//   id: string;
-//   category: string;
-//   selected: boolean;
-//   active: boolean;
-//   name: string;
-// }
+interface Tag {
+  id: string;
+  category: string;
+  selected?: boolean;
+  active?: boolean;
+  name: string;
+}
 export const TagsList = ({ tags, category, handleTagClick }: Props) => {
   return (
     <>
@@ -21,8 +21,8 @@ export const TagsList = ({ tags, category, handleTagClick }: Props) => {
               key={tag.id}
               tag={tag}
               name={tag.name}
-              selected={tag.selected}
-              active={tag.active}
+              selected={tag.selected || false}
+              active={tag.active || false}
               action={handleTagClick}
             />
           )

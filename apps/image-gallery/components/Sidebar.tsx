@@ -5,7 +5,7 @@ import { useGalleryStore } from "store/galleryStore";
 import { DoubleArrowButton, FilterButton, FavoriteButton } from "ui";
 import CollapsibleTagsList from "components/CollapsibleTagsList";
 import styles from "styles/Sidebar.module.css";
-
+// import { Tag } from "ui/Tag";
 interface SidebarProps extends SidebarVisibility {
   categories: string[];
 }
@@ -17,10 +17,10 @@ interface SidebarVisibility {
 
 interface SidebarBodyProps {
   categories: string[];
-  tags: Tag[];
+  tags: SidebarTag[];
 }
 
-interface Tag {
+interface SidebarTag {
   id: string;
   name: string;
   category: string;

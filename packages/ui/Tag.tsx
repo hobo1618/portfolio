@@ -9,12 +9,12 @@ type Props = {
   unselectedStyle?: object;
   inactiveStyle?: object;
 };
-interface Tag {
+export interface Tag {
   id: string;
   name: string;
   category: string;
-  selected: boolean;
-  active: boolean;
+  selected?: boolean | undefined;
+  active?: boolean | undefined;
 }
 const baseStyle = {
   borderRadius: "2rem",

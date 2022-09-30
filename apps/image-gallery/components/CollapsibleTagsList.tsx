@@ -13,8 +13,8 @@ interface Tag {
   id: string;
   name: string;
   category: string;
-  selected: boolean;
-  active: boolean;
+  selected?: boolean;
+  active?: boolean;
 }
 
 interface IHandleTagClick {
