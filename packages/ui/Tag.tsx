@@ -1,6 +1,6 @@
 import { useState } from "react";
 type Props = {
-  tag: object,
+  tag: Tag,
   name: string,
   action: (tag: object) => void;
   selected: boolean;
@@ -9,7 +9,13 @@ type Props = {
   unselectedStyle?: object;
   inactiveStyle?: object;
 };
-
+interface Tag {
+  id: string;
+  name: string;
+  category: string;
+  selected: boolean;
+  active: boolean;
+}
 const baseStyle = {
   borderRadius: "2rem",
   margin: "2px"

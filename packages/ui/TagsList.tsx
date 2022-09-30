@@ -4,13 +4,13 @@ interface Props {
   category: string;
   tags: Tag[];
 }
-interface Tag {
-  id: string;
-  category: string;
-  selected: boolean;
-  active: boolean;
-  name: string;
-}
+// interface Tag {
+//   id: string;
+//   category: string;
+//   selected: boolean;
+//   active: boolean;
+//   name: string;
+// }
 export const TagsList = ({ tags, category, handleTagClick }: Props) => {
   return (
     <>
