@@ -5,6 +5,7 @@
       "dependsOn": [
         "^build"
       ],
+      "env": ["DB_PASS", "DB_USER"],
       "outputs": [
         "dist/**",
         ".next/**"
@@ -22,6 +23,6 @@
       "cache": false
     }
   },
-  "globalDependencies": [".env"],
+  "globalDependencies": [".env", "&DB_PASS", "$DB_USER"],
   "globalEnv": ["DB_USER", "DB_PASS"]
 }
