@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["dummyimage.com"],
+    domains: ["dummyimage.com", "settla.s3.eu-central-1.amazonaws.com"],
   },
 };
 

@@ -14,7 +14,7 @@ const BlurImage = ({ description, width, height, href }: BlurImageProps) => {
       alt={description || ""}
       width={width}
       height={height}
-      src={`/assets/${href}`}
+      src={`https://settla.s3.eu-central-1.amazonaws.com/${href}`}
       className={styles.imageEffects}
     />
   );
