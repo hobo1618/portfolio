@@ -1,6 +1,6 @@
 import Tag from "./Tag";
 interface Props {
-  handleTagClick: () => void;
+  handleTagClick: (args: any) => void;
   category: string;
   tags: Tag[];
 }

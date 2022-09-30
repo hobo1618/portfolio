@@ -13,9 +13,11 @@ interface Tag {
   id: string;
   name: string;
   category: string;
+  selected: boolean;
+  active: boolean;
 }
 
-interface HandleTagClick {
+interface IHandleTagClick {
   category: string;
   id: string;
 }
@@ -28,7 +30,7 @@ const CollapsibleTagsList = memo(
 
     const filterTags = useGalleryStore((state) => state.filterTags, shallow);
 
-    const handleTagClick = ({ id, category }: HandleTagClick) => {
+    const handleTagClick = ({ id, category }: IHandleTagClick) => {
       filterTags[category].includes(id)
         ? removeFilterTag(id, category)
         : addFilterTag(id, category);
