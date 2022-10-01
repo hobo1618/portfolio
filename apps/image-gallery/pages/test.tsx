@@ -1,5 +1,5 @@
 import type { NextPage, GetServerSideProps } from "next";
-import pocketbaseInit from "pocketbaseInit";
+import pocketbaseInit from "pocketbase-init";
 
 interface Props {
   items: any
