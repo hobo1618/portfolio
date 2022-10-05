@@ -41,25 +41,6 @@ importers:
       tsconfig: link:../../packages/tsconfig
       typescript: 4.8.3
 
-  apps/gallery-backend:
-    specifiers:
-      '@types/node': ^18.7.23
-      '@types/uuid': ^8.3.4
-      eslint: ^8.24.0
-      json-loader: ^0.5.7
-      pocketbase: ^0.7.1
-      typescript: ^4.8.4
-      uuid: ^9.0.0
-    dependencies:
-      '@types/uuid': 8.3.4
-      pocketbase: 0.7.1
-      uuid: 9.0.0
-    devDependencies:
-      '@types/node': 18.7.23
-      eslint: 8.24.0
-      json-loader: 0.5.7
-      typescript: 4.8.4
-
   apps/image-gallery:
     specifiers:
       '@next/eslint-plugin-next': ^12.3.1
