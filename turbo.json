@@ -5,16 +5,10 @@
       "dependsOn": [
         "^build"
       ],
-      "env": ["DB_PASS", "DB_USER"],
       "outputs": [
         "dist/**",
         ".next/**"
       ]
-    },
-    "image-gallery#build": {
-      "dependsOn": ["^build", "$DB_PASS", "$DB_USER"],
-      "env": ["DB_USER", "DB_PASS"],
-      "outputs": [".next/**"]
     },
     "lint": {
       "outputs": []
@@ -22,7 +16,5 @@
     "dev": {
       "cache": false
     }
-  },
-  "globalDependencies": [".env", "&DB_PASS", "$DB_USER"],
-  "globalEnv": ["DB_USER", "DB_PASS"]
+  }
 }
